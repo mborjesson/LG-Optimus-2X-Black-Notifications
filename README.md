@@ -4,10 +4,10 @@ Touch LED Notifications for LG Optimus 2X/T-Mobile G2X/Star (P990/P999/SU660) an
 
 Where to start looking
 ======================
-For UI-preferences the files in `com.martinborjesson.o2xtouchlednotifications.ui.*´ and the `main_preferences.xml´-file is where you should look. The `MainPreferences´-class is quite a mess unfortunately so it can be a bit difficult to find anything there.
-For the service itself have a look in `MainService´.
-Feedbacks (LED-pulse, vibrator and notification ringtone) can be found in `com.martinborjesson.o2xtouchlednotifications.feedbacks´.
-Notifications (Gmail, SMS/MMS and missed calls) can be found in `com.martinborjesson.o2xtouchlednotifications.notifications´.
+For UI-preferences the files in `com.martinborjesson.o2xtouchlednotifications.ui.*` and the `main_preferences.xml`-file is where you should look. The `MainPreferences`-class is quite a mess unfortunately so it can be a bit difficult to find anything there.
+For the service itself have a look in `MainService`.
+Feedbacks (LED-pulse, vibrator and notification ringtone) can be found in `com.martinborjesson.o2xtouchlednotifications.feedbacks`.
+Notifications (Gmail, SMS/MMS and missed calls) can be found in `com.martinborjesson.o2xtouchlednotifications.notifications`.
 
 License
 =======
