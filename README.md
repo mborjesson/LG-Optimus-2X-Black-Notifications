@@ -15,9 +15,9 @@ All code is licensed under the Apache Software License 2.0. Please read the LICE
 
 Thanks to
 =========
-Paul at MoDaCo for sharing how to change the brightness on the touch LED buttons !
-aerosoul@des1gn.de for helping me with the LG Optimus Black implementation !
-Everyone who helped me out with the app during its development !
+Paul at MoDaCo for sharing how to change the brightness on the touch LED buttons.
+aerosoul@des1gn.de for helping me with the LG Optimus Black implementation.
+Everyone who helped me out with the app during its development.
 
 Disclaimer
 ==========

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LG 2X/Black Notifications</string>
+    
+    <string name="translator_language">English</string> <!-- translated language -->
+    <string name="translator_name"></string> <!-- your name, leave empty if you do not want to be credited -->
+    
+    <string name="preference_title_enable">Enable</string>
+    <string name="preference_title_notifications">Notifications</string>
+    <string name="preference_title_gmail">Gmail</string>
+    <string name="preference_title_smsmms">SMS/MMS</string>
+    <string name="preference_title_missed_calls">Missed calls</string>
+    <string name="preference_title_monitored_activities">Monitored activities</string>
+    <string name="preference_title_select_monitored_activities">Select monitored activities</string>
+    <string name="preference_summary_select_monitored_activities">Acitivities that will be monitored for notifications</string>
+    <string name="preference_title_clear_monitored_activities">Clear monitored activities</string>
+    <string name="preference_summary_clear_monitored_activities">Removes all monitored activities</string>
+    <string name="preference_title_notifications_with_lights">Notifications with lights</string>
+    <string name="preference_summaryon_notifications_with_lights">Start feedback for all notifications that wants to enable the LED light</string>
+    <string name="preference_summaryoff_notifications_with_lights">Do not start feedback for notifications that wants to enable the LED light</string>
+    <string name="preference_title_excluded_activities">Excluded activities</string>
+    <string name="preference_summary_excluded_activities">If an activity has a light-notification which is unwanted it can be excluded here</string>
+    <string name="preference_title_clear_excluded_activities">Clear excluded activities</string>
+    <string name="preference_summary_clear_excluded_activities">Removes all excluded activities</string>
+    
+    <string name="preference_title_feedback">Feedback</string>
+    <string name="preference_title_customize">Customize</string>
+    <string name="preference_title_default_feedback_options">Default feedback options</string>
+    <string name="preference_summary_default_feedback_options">Change the default feedback options</string>
+    <string name="preference_title_feedback_notifications">Notifications</string>
+    <string name="preference_summary_feedback_notifications">Change the feedback options for notifications</string>
+    <string name="preference_title_feedback_delay">Delay</string>
+    <string name="preference_summary_feedback_delay">Change the feedback options for notifications</string>
+    <string name="dialog_message_feedback_delay">In seconds</string>
+    <string name="dialog_description_feedback_delay">Wait %s before the feedback starts</string>
+    <string name="dialog_description_feedback_delay_disabled">Feedback delay is disabled</string>
+    <string name="preference_title_feedback_timeout">Timeout</string>
+    <string name="preference_summary_feedback_timeout">%s hours</string>
+    
+    <string name="preference_title_feedback_notification">Notification</string>
+    <string name="preference_title_feedback_display_notification">Display notification</string>
+    <string name="preference_summaryon_feedback_display_notification">Display a notification in the notification bar when the feedback is on, this can be selected to turn it off</string>
+    <string name="preference_summaryoff_feedback_display_notification">No notification is displayed when the feedback is on</string>
+    <string name="preference_title_feedback_always_display_notification">Always display</string>
+    <string name="preference_summaryon_feedback_always_display_notification">Always display the notification</string>
+    <string name="preference_summaryoff_feedback_always_display_notification">Only display when there is a notification</string>
+    <string name="preference_title_feedback_display_notification_activity">Display notification activity</string>
+    <string name="preference_summaryon_feedback_display_notification_activity">Display which activity that triggered the last notification</string>
+    <string name="preference_summaryoff_feedback_display_notification_activity">Do not display which activity that triggered the last notification</string>
+    
+    <string name="preference_title_miscellaneous_options">Miscellaneous options</string>
+    <string name="preference_title_miscellaneous">Miscellaneous</string>
+    <string name="preference_title_miscellaneous_accelerometer">Accelerometer</string>
+    <string name="preference_summary_miscellaneous_accelerometer">The accelerometer is used to detect user activity</string>
+    <string name="preference_title_miscellaneous_accelerometer_enable_in_lockscreen">Enable in lock screen</string>
+    <string name="preference_summaryon_miscellaneous_accelerometer_enable_in_lockscreen">The accelerometer is enabled in the lock screen</string>
+    <string name="preference_summaryoff_miscellaneous_accelerometer_enable_in_lockscreen">The accelerometer is not enabled in the lock screen</string>
+    <string name="preference_title_miscellaneous_accelerometer_tolerance">Accelerometer tolerance</string>
+    <string name="preference_summary_miscellaneous_accelerometer_tolerance">Current value: %s</string>
+    <string name="preference_title_miscellaneous_sleep">Sleep</string>
+    <string name="preference_summary_miscellaneous_sleep">Option to disable the feedback</string>
+    <string name="preference_title_miscellaneous_sleep_enable">Enable sleep</string>
+    <string name="preference_title_miscellaneous_sleep_off_time">Off time</string>
+    <string name="preference_title_miscellaneous_sleep_on_time">On time</string>
+    <string name="preference_title_miscellaneous_touch_led">Touch LED options</string>
+    <string name="preference_summary_miscellaneous_touch_led">Other options for the touch LED buttons</string>
+    <string name="preference_title_miscellaneous_touch_led_not_available">Not available</string>
+    <string name="preference_summary_miscellaneous_touch_led_not_available">This option is not available for your device</string>
+    <string name="preference_title_miscellaneous_touch_led_set_on_boot">Set on boot</string>
+    <string name="preference_summaryon_miscellaneous_touch_led_set_on_boot">Set the defined touch LED brightness on boot</string>
+    <string name="preference_summaryoff_miscellaneous_touch_led_set_on_boot">Do not set the defined touch LED brightness on boot</string>
+    <string name="preference_title_miscellaneous_touch_led_brightness">Touch LED brightness</string>
+    <string name="preference_summary_miscellaneous_touch_led_brightness">Set the brightness of the touch LEDs for normal use</string>
+    <string name="preference_title_miscellaneous_charging">Charging</string>
+    <string name="preference_summary_miscellaneous_charging">Options for charging behavior</string>
+    <string name="preference_title_miscellaneous_charging_disable_feedback">Disable feedback while charging</string>
+    <string name="preference_summaryon_miscellaneous_charging_disable_feedback">Feedback is disabled while charging</string>
+    <string name="preference_summaryoff_miscellaneous_charging_disable_feedback">Feedback is enabled while charging</string>
+    <string name="preference_title_miscellaneous_charging_charge_indicator">Charge indicator</string>
+    <string name="preference_summaryon_miscellaneous_charging_charge_indicator">Touch LEDs are on when screen is off to indicate charging, LEDs turns off when charging is complete</string>
+    <string name="preference_summaryoff_miscellaneous_charging_charge_indicator">Charge indicator is disabled</string>
+    <string name="preference_title_miscellaneous_charging_touch_led_brightness">Touch LED brightness while charging</string>
+    <string name="preference_summary_miscellaneous_charging_touch_led_brightness">Set the brightness of the touch LEDs while charging</string>
+    <string name="preference_title_miscellaneous_battery_saving">Battery saving options</string>
+    <string name="preference_summary_miscellaneous_battery_saving">Options for battery saving</string>
+    <string name="preference_title_miscellaneous_battery_saving_disable_feedback">Disable feedback on low battery</string>
+    <string name="preference_summaryon_miscellaneous_battery_saving_disable_feedback">Feedback will be disabled on low battery</string>
+    <string name="preference_summaryoff_miscellaneous_battery_saving_disable_feedback">Feedback will not be disabled on low battery</string>
+    <string name="preference_title_miscellaneous_battery_saving_disable_feedback_value">Low battery value</string>
+    <string name="preference_summary_miscellaneous_battery_saving_disable_feedback_value">%s %</string>
+    <string name="preference_title_miscellaneous_autostart">Autostart</string>
+    <string name="preference_title_miscellaneous_autostart_service">Autostart service</string>
+    <string name="preference_summaryon_miscellaneous_autostart_service">Service will be started on boot</string>
+    <string name="preference_summaryoff_miscellaneous_autostart_service">Service will not be started on boot</string>
+
+    <string name="preference_title_feedback_test">Test</string>
+    <string name="preference_summary_feedback_test">Test the feedback</string>
+    <string name="dialog_title_feedback_test">Testing...</string>
+    <string name="preference_title_feedback_touch_led">Touch LED</string>
+    <string name="preference_title_feedback_touch_led_mode">Mode</string>
+    <string name="preference_title_feedback_touch_led_fade_in_time">Fade in time</string>
+    <string name="dialog_title_feedback_touch_led_fade_in_time">Fade in time in milliseconds</string>
+    <string name="preference_title_feedback_touch_led_fully_lit_time">Fully lit time</string>
+    <string name="dialog_title_feedback_touch_led_fully_lit_time">Fully lit time in milliseconds</string>
+    <string name="preference_title_feedback_touch_led_fade_out_time">Fade out time</string>
+    <string name="dialog_title_feedback_touch_led_fade_out_time">Fade out time in milliseconds</string>
+    <string name="preference_title_feedback_touch_led_inactive_time">Inactive time</string>
+    <string name="dialog_title_feedback_touch_led_inactive_time">Inactive time in milliseconds</string>
+    <string name="preference_summary_feedback_touch_led_time">%s ms</string>
+    <string name="preference_title_feedback_touch_led_brightness">Touch LED brightness</string>
+    <string name="preference_summary_feedback_touch_led_brightness">%s %</string>
+    <string name="preference_title_feedback_vibrator">Vibrator</string>
+    <string name="preference_title_feedback_vibrator_mode">Mode</string>
+    <string name="preference_title_feedback_vibrator_duration">Duration</string>
+    <string name="dialog_title_feedback_vibrator_duration">In milliseconds</string>
+    <string name="preference_summary_feedback_vibrator_duration">%s ms</string>
+    <string name="preference_title_feedback_vibrator_delay">Delay</string>
+    <string name="dialog_title_feedback_vibrator_delay">In milliseconds</string>
+    <string name="preference_summary_feedback_vibrator_delay">Wait a minimum of %s ms between vibrations</string>
+    
+    <string name="preference_title_feedback_notification_ringtone">Notification ringtone</string>
+    <string name="preference_title_feedback_notification_ringtone_select">Select notification ringtone</string>
+    <string name="preference_summary_feedback_notification_ringtone_select">Current ringtone:</string>
+    <string name="preference_title_feedback_notification_ringtone_mode">Mode</string>
+    <string name="preference_title_feedback_notification_ringtone_duration">Duration</string>
+    <string name="dialog_title_feedback_notification_ringtone_duration">In milliseconds</string>
+    <string name="preference_summary_feedback_notification_ringtone_duration">%s ms</string>
+    <string name="preference_title_feedback_notification_ringtone_delay">Delay</string>
+    <string name="dialog_title_feedback_notification_ringtone_delay">In milliseconds</string>
+    <string name="preference_summary_feedback_notification_ringtone_delay">Wait a minimum of %s ms between audio playbacks</string>
+    
+    <string name="preference_title_feedback_other">Other</string>
+    <string name="preference_title_feedback_other_priority">Priority</string>
+    <string name="dialog_title_feedback_other_priority">Higher value means higher priority. Feedbacks sharing the same value will replace each other.</string>
+    <string name="preference_summary_feedback_other_priority">%s</string>
+    <string name="preference_title_feedback_other_only_light_notification">Only on light notification</string>
+    <string name="preference_summary_feedback_other_only_light_notification">React only on light notifications that the activity sends. Useful if the activity has a permanent notification in the bar.</string>
+    
+    <string name="preference_title_advanced">Advanced</string>
+    <string name="preference_title_advanced_log_notifications">Log notifications</string>
+    <string name="preference_summary_advanced_log_notifications">Enable this if you want to find out which activity is generating a certain notification</string>
+    <string name="preference_title_advanced_show_logged_notifications">Show logged notifications</string>
+    <string name="preference_summary_advanced_show_logged_notifications">Display the last 20 notifications received from all activities</string>
+    <string name="preference_title_advanced_debug">Debug</string>
+    <string name="preference_title_advanced_debug_log">Log debug output</string>
+    <string name="preference_summaryon_advanced_debug_log">Logging debug output, use adb logcat on your device to see it</string>
+    <string name="preference_summaryoff_advanced_debug_log">No logging</string>
+    <string name="preference_title_advanced_debug_log_file">Log debug output to file</string>
+    <string name="preference_summaryon_advanced_debug_log_file">Logging debug output to o2xtouchlednot.log on the SD Card</string>
+    <string name="preference_summaryoff_advanced_debug_log_file">No logging</string>
+    <string name="preference_title_advanced_debug_clear_log_file">Clear log file</string>
+    
+    <string name="preference_title_other">Other</string>
+    <string name="preference_title_about">About</string>
+    <string name="preference_title_show_changelog">Show changelog</string>
+    <string name="preference_title_about_version">Version</string>
+    <string name="preference_title_about_developer">Developer</string>
+    <string name="preference_title_about_translator">Translator</string>
+    
+    <string name="preference_title_customized_feedback">Customized feedback</string>
+    <string name="preference_summaryon_customized_feedback">Customized feedback is used</string>
+    <string name="preference_summaryoff_customized_feedback">Default feedback is used</string>
+    <string name="preference_title_customized_feedback_options">Feedback options</string>
+    <string name="preference_summary_customized_feedback_options">Change feedback options</string>
+    
+    <string name="dialog_title_unable_to_start">Unable to start</string>
+    <string name="dialog_message_unable_to_start">This application only works with LG Optimus 2X and Optimus Black.</string>
+
+    <string name="toast_monitored_activites_removed">Monitored activities removed</string>
+    <string name="toast_excluded_activites_removed">Excluded activities removed</string>
+    
+    <string name="dialog_title_logged_notifications">Logged notifications</string>
+    <string name="dialog_message_logged_notifications_package_name">Package name:</string>
+    <string name="dialog_message_logged_notifications_trigger_lights">Trigger lights:</string>
+    <string name="dialog_message_logged_notifications_received">Received:</string>
+    <string name="dialog_message_logged_notifications_none">No notifications received</string>
+    
+    <string name="dialog_message_enable_accessibility">The app must be enabled in Accessibility settings, do you want to do that now ?</string>
+
+    <string name="dialog_title_loading_activities">Loading activities...</string>
+    <string name="dialog_title_select_activities">Select activities</string>
+    <string name="toast_added_activity">Added</string>
+    
+    <string name="time_second">second</string>
+    <string name="time_seconds">seconds</string>
+    <string name="time_milliseconds">milliseconds</string>
+    
+    <string name="other_none">None</string>
+    
+    <string name="array_pulse_timeout_1">Never</string>
+    <string name="array_pulse_timeout_2">15 minutes</string>
+    <string name="array_pulse_timeout_3">30 minutes</string>
+    <string name="array_pulse_timeout_4">1 hour</string>
+    <string name="array_pulse_timeout_5">2 hours</string>
+    <string name="array_pulse_timeout_6">3 hours</string>
+    <string name="array_pulse_timeout_7">4 hours</string>
+    <string name="array_pulse_timeout_8">5 hours</string>
+    <string name="array_pulse_timeout_9">6 hours</string>
+    <string name="array_pulse_timeout_10">7 hours</string>
+    <string name="array_pulse_timeout_11">8 hours</string>
+    
+    <string name="array_vibrate_mode_1">Off</string>
+    <string name="array_vibrate_mode_2">Once</string>
+    <string name="array_vibrate_mode_3">Repeating</string>
+    <string name="array_vibrate_mode_4">Increase delay over time</string>
+    
+    <string name="array_notification_ringtone_mode_1">Off</string>
+    <string name="array_notification_ringtone_mode_2">Once</string>
+    <string name="array_notification_ringtone_mode_3">Repeating</string>
+    <string name="array_notification_ringtone_mode_4">Increase delay over time</string>
+    
+    <string name="array_pulse_mode_1">Repeating fading pulse</string>
+    <string name="array_pulse_mode_2">Repeating non-fading pulse</string>
+    <string name="array_pulse_mode_3">Constant</string>
+    <string name="array_pulse_mode_4">One fading pulse</string>
+    <string name="array_pulse_mode_5">One non-fading pulse</string>
+    
+    <string name="dialog_title_changelog">Changelog</string>
+    
+    <string name="dialog_message_has_root_do_chmod">The app detected that it has no read or write access to a required file, do you wish to fix this ?\nAllowing this will also perform this fix on boot without asking. This action requires root.</string>
+    <string name="dialog_message_no_root">The app detected that it has no read or write access to a required file. This can be fixed but this action requires the device to be rooted. This has to be done before the app can be used properly.</string>
+</resources>

@@ -1,0 +1,87 @@
+1.0 (25 July 2011)
+
+* The source code has been released ! Source can be found at http://github.com/mborjesson/
+* Added support for notification ringtones.
+* Added an option to only react on light notifications for selected activities. This should fix issues with for example Skype, where it may change its status in the notification bar. This will only work if the activity has the light flag enabled in its notification.
+* Better vibrator-handling. This should fix the problems where the vibrator would never stop.
+* Miscellaneous bug-fixes.
+
+0.9.4 (23 July 2011)
+
+* Now working with the P999 OTA Gingerbread-update. The fix requires the device to be rooted.
+* The SMS/MMS-problems should now be fixed.
+
+0.9.3.4 (16 July 2011)
+
+* The fading pulse is now less CPU-intensive.
+* Increased the maximum feedback-delay to 30 seconds. If you have problems with SMS/MMS not working try to increase the delay to 30 and tell me if it still doesn't work.
+
+0.9.3.3 (10 July 2011)
+
+* Fixed vibrations.
+
+0.9.3.2 (9 July 2011)
+
+* Fixed a bug which sometimes caused the feedback to start even though a notification has been read.
+* Fixed: Accidentally used the "Off time"-string for the "On time" in the sleep-settings.
+
+0.9.3.1 (23 June 2011)
+
+* Fixed a bug which caused the accelerometer-sensor to not turn off when it should (should fix some battery drain issues).
+* Lowered disable feedback on low battery value to 15%.
+
+0.9.3
+
+* SMS/MMS-fix: Increased default delay to 4 seconds.
+* Prepared app for translations.
+
+0.9.2
+
+* SMS/MMS problem: Reverted to old code in an attempt to fix the problem with SMS/MMS not working properly for everyone.
+* Added some checks to prevent the pulse from starting if SMS has been checked.
+
+0.9
+
+* Initial support for Optimus Black. Thanks to aerosoul@des1gn.de for helping me out !
+* Renamed pulse to feedback since it is no longer only the LED-pulse.
+* Added support for different feedbacks depending on activity (Feedback -> Notifications)
+* Two more pulse-modes for the LEDs.
+* Removed the option to start pulse when screen is on and made it the default mode.
+
+0.8.5.1
+
+* Fixed an issue where only one of several Gmail-accounts started the pulse.
+* Added an option for disabling the pulse when low on battery (enabled by default and set to 25 %). Can be changed in Miscellaneous -> Battery saving options.
+
+0.8.5
+
+* Changed the way the brightness value is handled internally in an attempt to make the brightness get back to the correct value when the pulse stops
+* Added more vibration-options
+* One more light mode (constant light)
+* Reworked UI a bit
+* And some bug-fixes as usual
+
+0.8
+
+* Added charging indicator. This is an EXPERIMENTAL feature that has not been thoroughly tested. 
+* Fixed the "Always display" notification together with "Display notification activity" currently breaks the app issue.
+* Reworked the pulse-handling. Hopefully it fixes the issue where the LED brightness was re-set to wrong value.
+* Added a pulse delay if screen is off. The reason for this is that if delay-mode was activated and the pulse was started before the screen turns on it would stop the pulse at once.
+* Several bug-fixes.
+
+0.7
+
+* Some work has been done to get WidgetLocker to work better with the app. Thanks to Erkan Harmanci for helping me out !
+* Added a new pulse behavior that will delay the pulse until the screen turns off. If user activity is detected the pulse will never start. This should solve some problems when using other lock screens or if there are other issues. Enabled by default.
+* Added a toggle to create a notification in the notification bar for stopping the pulse if needed.
+* Some bug fixes.
+
+0.6
+
+* Sleep-mode is fixed.
+* Added support for notifications that wants to enable lights. Enabling this will start the pulse for all notifications that wants the LED lights enabled without having to add them as monitored.
+* Added a special case for Gmail so that the pulse will stop if the mail has been read by other means. If there are other notifications waiting the pulse will continue.
+* Better crash-handling. If the pulse was on when the app was killed/crashed the pulse would never stop until another notification was received.
+* Battery-save mode is now disabled by default and pulse-timeout decreased to 1 hour.
+* Added 15/30 minutes options to pulse-timeout.
+* Some bug-fixes

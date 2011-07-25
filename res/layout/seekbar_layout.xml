@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" android:orientation="vertical">
+    <SeekBar android:id="@+id/seekBarSeekBar" android:layout_height="wrap_content" android:layout_width="match_parent" android:paddingLeft="20dip" android:paddingRight="20dip" android:paddingTop="6dip"></SeekBar>
+    <TextView android:id="@+id/textViewSeekBar" android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="0/100" android:paddingLeft="20dip" android:paddingTop="6dip" android:paddingBottom="20dip"></TextView>
+</LinearLayout>

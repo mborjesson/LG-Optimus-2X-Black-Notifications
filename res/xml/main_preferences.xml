@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<CheckBoxPreference android:title="@string/preference_title_enable"
+		android:defaultValue="true" 
+		android:key="checkBoxServiceEnabled" />
+	<PreferenceCategory android:title="Main options">
+		<PreferenceScreen android:key="NotificationPrefs"
+			android:title="@string/preference_title_notifications">
+				<CheckBoxPreference android:title="@string/preference_title_gmail"
+					android:key="checkBoxNotificationsGmailPref"
+					android:defaultValue="true" />
+				<CheckBoxPreference android:title="@string/preference_title_smsmms"
+					android:key="checkBoxNotificationsSMSMMSPref"
+					android:defaultValue="true" />
+				<CheckBoxPreference android:title="@string/preference_title_missed_calls"
+					android:key="checkBoxNotificationsMissedCallsPref"
+					android:defaultValue="true" />
+			<PreferenceCategory android:title="@string/preference_title_monitored_activities">
+				<Preference android:title="@string/preference_title_select_monitored_activities"
+					android:summary="@string/preference_summary_select_monitored_activities"
+					android:key="preferenceNotificationsMonitoredActivitiesPref" />
+				<Preference android:title="@string/preference_title_clear_monitored_activities"
+					android:summary="@string/preference_summary_clear_monitored_activities"
+					android:key="preferenceNotificationsClearMonitoredActivitiesPref" />
+				<CheckBoxPreference android:title="@string/preference_title_notifications_with_lights"
+					android:key="checkBoxReactOnLightNotifications"
+					android:summaryOn="@string/preference_summaryon_notifications_with_lights"
+					android:summaryOff="@string/preference_summaryoff_notifications_with_lights"
+					android:defaultValue="false" />
+				<Preference android:title="@string/preference_title_excluded_activities"
+					android:dependency="checkBoxReactOnLightNotifications"
+					android:summary="@string/preference_summary_excluded_activities"
+					android:key="preferenceNotificationsExcludedActivitiesPref" />
+				<Preference android:title="@string/preference_title_clear_excluded_activities"
+					android:dependency="checkBoxReactOnLightNotifications"
+					android:summary="@string/preference_summary_clear_excluded_activities"
+					android:key="preferenceNotificationsClearExcludedActivitiesPref" />
+			</PreferenceCategory>
+		</PreferenceScreen>
+		<PreferenceScreen android:key="PulsePrefs"
+			android:title="@string/preference_title_feedback">
+			<PreferenceCategory android:title="@string/preference_title_customize" android:key="PulseCustomizePrefs">
+				<PreferenceScreen android:key="CustomizePulsePrefs"
+					android:title="@string/preference_title_default_feedback_options" android:summary="@string/preference_summary_default_feedback_options" />
+				<PreferenceScreen android:title="@string/preference_title_feedback_notifications"
+					android:summary="@string/preference_summary_feedback_notifications"
+					android:key="preferenceNotificationsCustomizeNotifications" />
+			</PreferenceCategory>
+<!--			<PreferenceCategory android:title="Behavior">-->
+<!--				<CheckBoxPreference -->
+<!--					android:key="checkBoxPulseDelayUntilScreenOff"-->
+<!--					android:title="Only on screen off"-->
+<!--					android:defaultValue="true"-->
+<!--					android:summaryOn="The pulse will be delayed until the screen turns off"-->
+<!--					android:summaryOff="The pulse will start at once" />-->
+<!--			</PreferenceCategory>-->
+			<PreferenceCategory android:title="@string/preference_title_feedback_notification">
+				<CheckBoxPreference 
+					android:key="checkBoxDisplayNotification"
+					android:title="@string/preference_title_feedback_display_notification"
+					android:defaultValue="false"
+					android:summaryOn="@string/preference_summaryon_feedback_display_notification"
+					android:summaryOff="@string/preference_summaryoff_feedback_display_notification" />
+				<CheckBoxPreference 
+					android:key="checkBoxDisplayNotificationAlways"
+					android:title="@string/preference_title_feedback_always_display_notification"
+					android:dependency="checkBoxDisplayNotification"
+					android:defaultValue="false"
+					android:summaryOn="@string/preference_summaryon_feedback_always_display_notification"
+					android:summaryOff="@string/preference_summaryoff_feedback_always_display_notification" />
+				<CheckBoxPreference 
+					android:key="checkBoxDisplayNotificationActivity"
+					android:title="@string/preference_title_feedback_display_notification_activity"
+					android:dependency="checkBoxDisplayNotification"
+					android:defaultValue="false"
+					android:summaryOn="@string/preference_summaryon_feedback_display_notification_activity"
+					android:summaryOff="@string/preference_summaryoff_feedback_display_notification_activity" />
+			</PreferenceCategory>
+			
+		</PreferenceScreen>
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/preference_title_miscellaneous_options">
+		<PreferenceScreen android:key="miscellaneousOptions"
+			android:title="@string/preference_title_miscellaneous">
+			<PreferenceScreen android:key="AccelerometerPrefs"
+				android:title="@string/preference_title_miscellaneous_accelerometer" 
+				android:summary="@string/preference_summary_miscellaneous_accelerometer" />
+			<PreferenceScreen android:key="SleepPrefs"
+				android:title="@string/preference_title_miscellaneous_sleep"
+				android:summary="@string/preference_summary_miscellaneous_sleep" />
+			<PreferenceScreen android:key="TouchLEDPrefs"
+				android:title="@string/preference_title_miscellaneous_touch_led"
+				android:summary="@string/preference_summary_miscellaneous_touch_led" />
+			<PreferenceScreen android:key="ChargingPrefs"
+				android:title="@string/preference_title_miscellaneous_charging"
+				android:summary="@string/preference_summary_miscellaneous_charging" >
+				<CheckBoxPreference android:key="checkBoxDisablePulseWhileCharging"
+					android:title="@string/preference_title_miscellaneous_charging_disable_feedback"
+					android:summaryOn="@string/preference_summaryon_miscellaneous_charging_disable_feedback"
+					android:summaryOff="@string/preference_summaryoff_miscellaneous_charging_disable_feedback" />
+				<CheckBoxPreference android:key="checkBoxEnableLEDWhileCharging"
+					android:title="@string/preference_title_miscellaneous_charging_charge_indicator"
+					android:summaryOn="@string/preference_summaryon_miscellaneous_charging_charge_indicator"
+					android:summaryOff="@string/preference_summaryoff_miscellaneous_charging_charge_indicator" />
+			</PreferenceScreen>
+			<PreferenceScreen android:key="BatterySavePrefs"
+				android:title="@string/preference_title_miscellaneous_battery_saving"
+				android:summary="@string/preference_summary_miscellaneous_battery_saving">
+				<CheckBoxPreference android:key="checkBoxDisablePulseOnLowBattery"
+					android:title="@string/preference_title_miscellaneous_battery_saving_disable_feedback"
+					android:summaryOn="@string/preference_summaryon_miscellaneous_battery_saving_disable_feedback"
+					android:summaryOff="@string/preference_summaryoff_miscellaneous_battery_saving_disable_feedback"
+					android:defaultValue="true" />
+			</PreferenceScreen>
+			<PreferenceCategory android:title="@string/preference_title_miscellaneous_autostart">
+				<CheckBoxPreference 
+					android:key="checkboxAutostartService"
+					android:title="@string/preference_title_miscellaneous_autostart_service"
+					android:dependency="checkBoxServiceEnabled"
+					android:defaultValue="true"
+					android:summaryOn="@string/preference_summaryon_miscellaneous_autostart_service"
+					android:summaryOff="@string/preference_summaryoff_miscellaneous_autostart_service" />
+			</PreferenceCategory>
+		</PreferenceScreen>
+		<PreferenceScreen android:title="@string/preference_title_advanced">
+			<PreferenceCategory android:title="@string/preference_title_notifications">
+				<CheckBoxPreference 
+					android:key="checkBoxLogNotificationsFromActivities"
+					android:title="@string/preference_title_advanced_log_notifications"
+					android:defaultValue="false"
+					android:summary="@string/preference_summary_advanced_log_notifications" />
+				<Preference 
+					android:key="buttonListNotificationsFromActivities"
+					android:title="@string/preference_title_advanced_show_logged_notifications"
+					android:dependency="checkBoxLogNotificationsFromActivities"
+					android:summary="@string/preference_summary_advanced_show_logged_notifications" />
+			</PreferenceCategory>
+			<PreferenceCategory android:title="@string/preference_title_advanced_debug">
+				<CheckBoxPreference 
+					android:key="checkBoxLog"
+					android:title="@string/preference_title_advanced_debug_log"
+					android:defaultValue="false"
+					android:summaryOn="@string/preference_summaryon_advanced_debug_log"
+					android:summaryOff="@string/preference_summaryoff_advanced_debug_log" />
+				<CheckBoxPreference 
+					android:key="checkBoxLogFile"
+					android:title="@string/preference_title_advanced_debug_log_file"
+					android:dependency="checkBoxLog"
+					android:defaultValue="false"
+					android:summaryOn="@string/preference_summaryon_advanced_debug_log_file"
+					android:summaryOff="@string/preference_summaryoff_advanced_debug_log_file" />
+				<Preference 
+					android:key="buttonClearLogFile"
+					android:title="@string/preference_title_advanced_debug_clear_log_file"
+					android:dependency="checkBoxLogFile" />
+			</PreferenceCategory>
+		</PreferenceScreen>
+	</PreferenceCategory>
+	<PreferenceCategory android:title="@string/preference_title_other">
+		<PreferenceScreen android:title="@string/preference_title_about" android:key="screenAbout">
+		</PreferenceScreen>
+	</PreferenceCategory>
+</PreferenceScreen>

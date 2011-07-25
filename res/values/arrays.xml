@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string-array name="fade_timeout_entries">
+        <item>@string/array_pulse_timeout_1</item>
+        <item>@string/array_pulse_timeout_2</item>
+        <item>@string/array_pulse_timeout_3</item>
+        <item>@string/array_pulse_timeout_4</item>
+        <item>@string/array_pulse_timeout_5</item>
+        <item>@string/array_pulse_timeout_6</item>
+        <item>@string/array_pulse_timeout_7</item>
+        <item>@string/array_pulse_timeout_8</item>
+        <item>@string/array_pulse_timeout_9</item>
+        <item>@string/array_pulse_timeout_10</item>
+        <item>@string/array_pulse_timeout_11</item>
+    </string-array>
+    
+    <string-array name="fade_timeout_values">
+        <item>0</item>
+        <item>0.25</item>
+        <item>0.5</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+    </string-array>
+
+	<string-array name="vibrate_type_entries">
+        <item>@string/array_vibrate_mode_1</item>
+        <item>@string/array_vibrate_mode_2</item>
+        <item>@string/array_vibrate_mode_3</item>
+        <item>@string/array_vibrate_mode_4</item>
+    </string-array>
+    
+    <string-array name="vibrate_type_values">
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+	<string-array name="notification_ringtone_type_entries">
+        <item>@string/array_notification_ringtone_mode_1</item>
+        <item>@string/array_notification_ringtone_mode_2</item>
+        <item>@string/array_notification_ringtone_mode_3</item>
+        <item>@string/array_notification_ringtone_mode_4</item>
+    </string-array>
+    
+    <string-array name="notification_ringtone_type_values">
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+	<string-array name="pulse_type_entries">
+        <item>@string/array_pulse_mode_1</item>
+        <item>@string/array_pulse_mode_2</item>
+        <item>@string/array_pulse_mode_3</item>
+        <item>@string/array_pulse_mode_4</item>
+        <item>@string/array_pulse_mode_5</item>
+    </string-array>
+    
+    <string-array name="pulse_type_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+</resources>
