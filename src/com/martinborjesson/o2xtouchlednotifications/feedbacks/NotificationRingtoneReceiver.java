@@ -36,7 +36,7 @@ public class NotificationRingtoneReceiver extends BroadcastReceiver {
     
     static private MediaPlayer mediaPlayer = null;
     static private int audioDelay = 0;
-    static private float audioSlowerOverTime = Constants.DEFAULT_VIBRATE_SLOWER_OVER_TIME;
+    static private float audioSlowerOverTime = Constants.DEFAULT_NOTIFICATION_RINGTONE_SLOWER_OVER_TIME;
     
     static private final int TYPE_ONCE = 0;
     static private final int TYPE_CONSTANT = 1;

@@ -22,14 +22,6 @@ public class Constants {
 	public static final boolean DEFAULT_AUTO_BRIGHTNESS = false;
 	public static final boolean DEFAULT_AUTOSTART_SERVICE = true;
 	
-	public static final int DEFAULT_PULSE_FADE_IN = 500;
-
-	public static final int DEFAULT_PULSE_ACTIVE = 3000;
-
-	public static final int DEFAULT_PULSE_FADE_OUT = 500;
-
-	public static final int DEFAULT_PULSE_INACTIVE = 2000;
-	
 	public static final int DEFAULT_PULSE_MAX_LED_STRENGTH = 20;
 	
 	public static final boolean DEFAULT_PREFERENCE_KEY_ONLY_LIGHT_NOTIFICATION = false;
@@ -78,9 +70,10 @@ public class Constants {
 	public static final int DEFAULT_LED_BRIGHTNESS_WHILE_CHARGING = 3;
 	public static final int DEFAULT_PULSE_DELAY = 4;
 	
-	public static final boolean DEFAULT_VIBRATE_ENABLED = false;
 	public static final float DEFAULT_VIBRATE_SLOWER_OVER_TIME = 1.1f;	
-	
+
+	public static final float DEFAULT_NOTIFICATION_RINGTONE_SLOWER_OVER_TIME = 1.1f;	
+
 	public static final int DEFAULT_PULSE_MODE = 0;
 
 	public static final int DEFAULT_FEEDBACK_PRIORITY = 0;
@@ -92,23 +85,36 @@ public class Constants {
 	public static final String PREFERENCE_KEY_TOUCH_LED_MODE = "touchLEDMode";
 	public static final String PREFERENCE_KEY_TOUCH_LED_BRIGHTNESS = "touchLEDBrightness";
 	public static final String PREFERENCE_KEY_TOUCH_LED_FADE_IN_TIME = "touchLEDFadeInTime";
+	public static final int DEFAULT_PULSE_FADE_IN = 500;
+
 	public static final String PREFERENCE_KEY_TOUCH_LED_FADE_OUT_TIME = "touchLEDFadeOutTime";
+	public static final int DEFAULT_PULSE_FADE_OUT = 500;
+	
 	public static final String PREFERENCE_KEY_TOUCH_LED_FULLY_LIT_TIME = "touchLEDFullyLitTime";
+	public static final int DEFAULT_PULSE_ACTIVE = 3000;
+	
 	public static final String PREFERENCE_KEY_TOUCH_LED_INACTIVE_TIME = "touchLEDInactiveTime";
+	public static final int DEFAULT_PULSE_INACTIVE = 2000;
+	
 	public static final String PREFERENCE_KEY_VIBRATION_MODE = "vibrationMode";
 	public static final int DEFAULT_VIBRATE_TYPE = -1;
+	
 	public static final String PREFERENCE_KEY_VIBRATION_DURATION = "vibrationDuration";
 	public static final int DEFAULT_VIBRATE_DURATION = 1000;
+	
 	public static final String PREFERENCE_KEY_VIBRATION_DELAY = "vibrationDelay";
 	public static final int DEFAULT_VIBRATE_DELAY = 3000;
+	
 	public static final String PREFERENCE_KEY_NOTIFICATION_RINGTONE = "notificationRingtone";
 	public static final String DEFAULT_NOTIFICATION_RINGTONE = null;
+	
 	public static final String PREFERENCE_KEY_NOTIFICATION_RINGTONE_MODE = "audioMode";
 	public static final int DEFAULT_NOTIFICATION_RINGTONE_TYPE = -1;
+	
 	public static final String PREFERENCE_KEY_NOTIFICATION_RINGTONE_DELAY = "audioDelay";
-	public static final int DEFAULT_NOTIFICATION_RINGTONE_DELAY = 3000;	
+	public static final int DEFAULT_NOTIFICATION_RINGTONE_DELAY = 3000;
+	
 	public static final String PREFERENCE_KEY_PRIORITY = "priority";
 	public static final String PREFERENCE_KEY_ONLY_LIGHT_NOTIFICATION = "onlyLightNotification";
-	
 	
 }
