@@ -1469,11 +1469,13 @@ public class MainPreferences extends PreferenceActivity implements OnSharedPrefe
 					CharSequence[] items = new CharSequence[info.length];
 					boolean[] checked = new boolean[info.length];
 					for (int i = 0; i < info.length; ++i) {
-						items[i] = info[i].label;
-						if (activities != null) {
-							checked[i] = activities.contains(info[i].packageName);
-						} else {
-							checked[i] = false;
+						if (info[i] != null) {
+							items[i] = info[i].label;
+							if (activities != null) {
+								checked[i] = activities.contains(info[i].packageName);
+							} else {
+								checked[i] = false;
+							}
 						}
 					}
 					AlertDialog.Builder d = new AlertDialog.Builder(MainPreferences.this);
