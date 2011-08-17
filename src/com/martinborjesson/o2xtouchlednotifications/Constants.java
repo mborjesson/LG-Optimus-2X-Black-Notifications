@@ -116,5 +116,8 @@ public class Constants {
 	
 	public static final String PREFERENCE_KEY_PRIORITY = "priority";
 	public static final String PREFERENCE_KEY_ONLY_LIGHT_NOTIFICATION = "onlyLightNotification";
+
 	
+	public static final boolean DEFAULT_FIX_GMAIL_NO_PERMISSIONS = false;
+
 }
