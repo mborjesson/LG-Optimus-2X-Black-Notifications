@@ -91,6 +91,7 @@ public class GmailContentObserver extends AbstractContentObserver {
 			}
 		} catch (Exception e) {
 			Logger.logDebug("Gmail getNumRead() exception: " + e.getMessage());
+			return -1;
 		}
 		return 0;
 	}
@@ -98,6 +99,11 @@ public class GmailContentObserver extends AbstractContentObserver {
 	@Override
 	public boolean hasChanged() {
 		return hasUnread;
+	}
+
+	@Override
+	public boolean isAvailable(Context context) {
+		return getNumUnread() >= 0;
 	}
 
 }

@@ -30,6 +30,8 @@ abstract public class AbstractContentObserver extends ContentObserver {
 		super(handler);
 		this.contentResolver = contentResolver;
 	}
+	
+	abstract public boolean isAvailable(Context context);
 
 	abstract public void register();
 	
