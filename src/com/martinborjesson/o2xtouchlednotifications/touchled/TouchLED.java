@@ -27,6 +27,8 @@ abstract public class TouchLED {
 	public final static int BACK = 2;
 	public final static int MENU = 3;
 	
+	private boolean usable = true;
+	
 	/**
 	 * Return the maximum brightness the LED can have
 	 * @return
@@ -94,6 +96,14 @@ abstract public class TouchLED {
 		return true;
 	}
 	
+	/**
+	 * Returns <code>true</code> if the LEDs on this device is usable<br/>
+	 * @return
+	 */
+	public boolean isUsable() {
+		return usable;
+	}
+	
 	static private TouchLED touchLED = null;
 	
 	/**
@@ -106,10 +116,13 @@ abstract public class TouchLED {
 				touchLED = new TouchLEDP990();
 			} else if (TouchLEDP970.isAvailable()) {
 				touchLED = new TouchLEDP970();
+			} else if (TouchLEDP920.isAvailable()) {
+				touchLED = new TouchLEDP920();
 			} else {
 				touchLED = new TouchLEDNone();
 			}
 		}
+		touchLED.usable = touchLED.isValid() && touchLED.hasProperPermissions();
 		return touchLED;
 	}
 	
