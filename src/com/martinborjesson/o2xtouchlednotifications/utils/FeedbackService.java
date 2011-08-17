@@ -34,20 +34,16 @@ public class FeedbackService {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		if (prefs.getBoolean("checkBoxServiceEnabled", Constants.DEFAULT_SERVICE_ENABLED)) {
 			Logger.logDebug("Starting service...");
-			// check if file exists, if it doesn't we don't want to start the service at all
-			if (TouchLED.getTouchLED().isValid()) {
-		    	PowerManager pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
-		    	Intent in = new Intent(context, MainService.class);
-		    	if (testId != null) {
-		    		in.setAction(MainService.ACTION_DO_TEST);
-		    		in.putExtra(MainService.EXTRAS_TEST_ID, testId);
-		    	} else if (!pm.isScreenOn()) {
-		    		in.setAction(MainService.ACTION_SCREEN_OFF);
-		    	} 
-				context.startService(in);
-			} else {
-				Logger.logDebug("Can't fulfill requirements. I won't start the service.");
-			}
+			
+	    	PowerManager pm = (PowerManager)context.getSystemService(Context.POWER_SERVICE);
+	    	Intent in = new Intent(context, MainService.class);
+	    	if (testId != null) {
+	    		in.setAction(MainService.ACTION_DO_TEST);
+	    		in.putExtra(MainService.EXTRAS_TEST_ID, testId);
+	    	} else if (!pm.isScreenOn()) {
+	    		in.setAction(MainService.ACTION_SCREEN_OFF);
+	    	} 
+			context.startService(in);
 		}
 	}
 	
@@ -61,6 +57,7 @@ public class FeedbackService {
 		if (prefs.getBoolean("rootPermissionFix", false) && TouchLED.getTouchLED().getFile() != null) {
 			SuperUser.doSuperUserCommand("chmod 666 " + TouchLED.getTouchLED().getFile().toString());
 		}
+		TouchLED.reset();
 	}
 	
 	/**
