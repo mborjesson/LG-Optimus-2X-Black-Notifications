@@ -248,8 +248,6 @@ public class MainService extends Service implements SensorEventListener {
 					// stop
 					int touchLEDState = touchLEDProperties.getInt(PROPERTY_TOUCH_LED_STATE, STATE_TOUCH_LED_INACTIVE);
 					if (touchLEDState == STATE_TOUCH_LED_CHARGING) {
-						int oldValue = preferences.getInt("seekBarTouchLEDStrengthPref", Constants.DEFAULT_TOUCH_LED_STRENGTH);
-						touchLED.set(TouchLED.MENU, oldValue);
 						touchLEDProperties.putInt(PROPERTY_TOUCH_LED_STATE, STATE_TOUCH_LED_INACTIVE);
 						touchLEDProperties.save();
 					}
@@ -268,6 +266,11 @@ public class MainService extends Service implements SensorEventListener {
 							registerSensor(sensorAccelerometer);
 						}
 					}
+				}
+				if (touchLED.isUsable()) {
+					// always do this so the led is restored
+					int oldValue = preferences.getInt("seekBarTouchLEDStrengthPref", Constants.DEFAULT_TOUCH_LED_STRENGTH);
+					touchLED.set(TouchLED.MENU, oldValue);
 				}
 			} else if (intent.getAction().equals(ACTION_PENDING_NOTIFICATION)) {
 				if (pendingNewNotification) {
@@ -373,17 +376,24 @@ public class MainService extends Service implements SensorEventListener {
 		
 		observers.clear();
 		if (preferences.getBoolean("checkBoxNotificationsGmailPref", Constants.DEFAULT_CHECK_GMAIL)) {
-	    	
+			Logger.logDebug("Adding Gmail observer");
 	    	// add all gmail accounts
+			boolean available = false;
 			AccountManager am = AccountManager.get(this);
 			Account[] accounts = am.getAccountsByType("com.google");
 			for (Account account : accounts) {
 		    	GmailContentObserver gmailObserver = new GmailContentObserver(getContentResolver(), this, account);
-				observers.add(gmailObserver);
+		    	if (gmailObserver.isAvailable(this)) {
+		    		available = true;
+					observers.add(gmailObserver);
+		    	}
 			}
 			
-			Logger.logDebug("Adding Gmail observer");
-			addExcludedActivity("com.google.android.gm");
+			if (!available) {
+	    		addMonitoredActivity("com.google.android.gm");
+			} else {
+				addExcludedActivity("com.google.android.gm");
+			}
 		}
 		if (preferences.getBoolean("checkBoxNotificationsSMSMMSPref", Constants.DEFAULT_CHECK_SMS_MMS)) {
 			if (!receivers.containsKey("SMSMMSReceiver")) {
@@ -490,7 +500,14 @@ public class MainService extends Service implements SensorEventListener {
 		intent.putExtra("packageName", packageName);
 		startService(intent);
 	}
-	
+
+	private void addMonitoredActivity(String packageName) {
+		Intent intent = new Intent(this, AccessibilityService.class);
+		intent.setAction(AccessibilityService.ACTION_ADD);
+		intent.putExtra("packageName", packageName);
+		startService(intent);
+	}
+
 	public boolean registerSensor(Sensor sensor) {
 		if (sensor == null) {
 			return false;
@@ -603,59 +620,63 @@ public class MainService extends Service implements SensorEventListener {
     		if (startPulse) {
     			pendingNewNotification = false;
 
-				Logger.logDebug("Start feedback... (" + pulseKey + ")");
-				if (touchLED instanceof TouchLEDP970) {
-					((TouchLEDP970)touchLED).setOnOffLED(true);
-				}
-
-				int touchLEDState = touchLEDProperties.getInt(PROPERTY_TOUCH_LED_STATE, STATE_TOUCH_LED_INACTIVE);
-				if (touchLEDState != STATE_TOUCH_LED_PULSE) {
-					touchLEDProperties.putInt(PROPERTY_TOUCH_LED_STATE, STATE_TOUCH_LED_PULSE);
-					touchLEDProperties.save();
-				}
-				
-				int pulseMode = toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_MODE, String.valueOf(Constants.DEFAULT_PULSE_MODE)), Constants.DEFAULT_PULSE_MODE);
-
-				if (pulseMode == 0 || pulseMode == 3) {
-					int pulseDelay = 
-						toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FADE_IN_TIME, String.valueOf(Constants.DEFAULT_PULSE_FADE_IN)), Constants.DEFAULT_PULSE_FADE_IN)+
-			    		toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FULLY_LIT_TIME, String.valueOf(Constants.DEFAULT_PULSE_ACTIVE)), Constants.DEFAULT_PULSE_ACTIVE);
-					int pulseInterval = 0;
-					if (pulseMode == 0) {
-			    		pulseInterval =
-				    		pulseDelay+
-				    		toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FADE_OUT_TIME, String.valueOf(Constants.DEFAULT_PULSE_FADE_OUT)), Constants.DEFAULT_PULSE_FADE_OUT)+
-			    			toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_INACTIVE_TIME, String.valueOf(Constants.DEFAULT_PULSE_INACTIVE)), Constants.DEFAULT_PULSE_INACTIVE);
-					} else if (pulseMode == 3) {
-						pulseTimeout = pulseDelay+
-			    		toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FADE_OUT_TIME, String.valueOf(Constants.DEFAULT_PULSE_FADE_OUT)), Constants.DEFAULT_PULSE_FADE_OUT)+
-			    		1000;
+    			// leds
+    			
+    			if (touchLED.isUsable()) {
+					Logger.logDebug("Start feedback... (" + pulseKey + ")");
+					if (touchLED instanceof TouchLEDP970) {
+						((TouchLEDP970)touchLED).setOnOffLED(true);
 					}
-					Logger.logDebug("Start touch led pulse... (interval: " + pulseInterval + ")");
-					TouchLEDService.reset();
-					startAlarm(this, TouchLEDReceiver.START_PULSE, TouchLEDReceiver.class, 0, pulseInterval, ALARM_TYPE_BROADCAST, false);
-					startAlarm(this, TouchLEDReceiver.STOP_PULSE, TouchLEDReceiver.class, pulseDelay, pulseInterval, ALARM_TYPE_BROADCAST, false);
-				} else if (pulseMode == 1 || pulseMode == 4) {
-			    	int stopStaticPulseDelay = 
-			    		toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FULLY_LIT_TIME, String.valueOf(Constants.DEFAULT_PULSE_ACTIVE)), Constants.DEFAULT_PULSE_ACTIVE);
-		    		int pulseInterval = 0;
-		    		if (pulseMode == 1) {
-		    			pulseInterval = 
-				    		stopStaticPulseDelay+
-				    		toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_INACTIVE_TIME, String.valueOf(Constants.DEFAULT_PULSE_INACTIVE)), Constants.DEFAULT_PULSE_INACTIVE);
-		    		} else if (pulseMode == 4) {
-						pulseTimeout = stopStaticPulseDelay+
-			    		1000;
-
-		    		}
-					Logger.logDebug("Start static touch led pulse... (interval: " + pulseInterval + ", delay: " + stopStaticPulseDelay + ", timeout: " + pulseTimeout + ")");
-					TouchLEDStaticPulseReceiver.reset();
-					startAlarm(this, TouchLEDStaticPulseReceiver.START_STATIC_PULSE, TouchLEDStaticPulseReceiver.class, 0, pulseInterval, ALARM_TYPE_BROADCAST, false);
-					startAlarm(this, TouchLEDStaticPulseReceiver.STOP_STATIC_PULSE, TouchLEDStaticPulseReceiver.class, stopStaticPulseDelay, pulseInterval, ALARM_TYPE_BROADCAST, false);
-				} else { // constant light
-					int maxLEDStrength = preferences.getInt(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_BRIGHTNESS, Constants.DEFAULT_PULSE_MAX_LED_STRENGTH);
-					touchLED.set(TouchLED.SEARCH, maxLEDStrength);
-				}
+	
+					int touchLEDState = touchLEDProperties.getInt(PROPERTY_TOUCH_LED_STATE, STATE_TOUCH_LED_INACTIVE);
+					if (touchLEDState != STATE_TOUCH_LED_PULSE) {
+						touchLEDProperties.putInt(PROPERTY_TOUCH_LED_STATE, STATE_TOUCH_LED_PULSE);
+						touchLEDProperties.save();
+					}
+					
+					int pulseMode = toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_MODE, String.valueOf(Constants.DEFAULT_PULSE_MODE)), Constants.DEFAULT_PULSE_MODE);
+	
+					if (pulseMode == 0 || pulseMode == 3) {
+						int pulseDelay = 
+							toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FADE_IN_TIME, String.valueOf(Constants.DEFAULT_PULSE_FADE_IN)), Constants.DEFAULT_PULSE_FADE_IN)+
+				    		toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FULLY_LIT_TIME, String.valueOf(Constants.DEFAULT_PULSE_ACTIVE)), Constants.DEFAULT_PULSE_ACTIVE);
+						int pulseInterval = 0;
+						if (pulseMode == 0) {
+				    		pulseInterval =
+					    		pulseDelay+
+					    		toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FADE_OUT_TIME, String.valueOf(Constants.DEFAULT_PULSE_FADE_OUT)), Constants.DEFAULT_PULSE_FADE_OUT)+
+				    			toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_INACTIVE_TIME, String.valueOf(Constants.DEFAULT_PULSE_INACTIVE)), Constants.DEFAULT_PULSE_INACTIVE);
+						} else if (pulseMode == 3) {
+							pulseTimeout = pulseDelay+
+				    		toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FADE_OUT_TIME, String.valueOf(Constants.DEFAULT_PULSE_FADE_OUT)), Constants.DEFAULT_PULSE_FADE_OUT)+
+				    		1000;
+						}
+						Logger.logDebug("Start touch led pulse... (interval: " + pulseInterval + ")");
+						TouchLEDService.reset();
+						startAlarm(this, TouchLEDReceiver.START_PULSE, TouchLEDReceiver.class, 0, pulseInterval, ALARM_TYPE_BROADCAST, false);
+						startAlarm(this, TouchLEDReceiver.STOP_PULSE, TouchLEDReceiver.class, pulseDelay, pulseInterval, ALARM_TYPE_BROADCAST, false);
+					} else if (pulseMode == 1 || pulseMode == 4) {
+				    	int stopStaticPulseDelay = 
+				    		toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FULLY_LIT_TIME, String.valueOf(Constants.DEFAULT_PULSE_ACTIVE)), Constants.DEFAULT_PULSE_ACTIVE);
+			    		int pulseInterval = 0;
+			    		if (pulseMode == 1) {
+			    			pulseInterval = 
+					    		stopStaticPulseDelay+
+					    		toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_INACTIVE_TIME, String.valueOf(Constants.DEFAULT_PULSE_INACTIVE)), Constants.DEFAULT_PULSE_INACTIVE);
+			    		} else if (pulseMode == 4) {
+							pulseTimeout = stopStaticPulseDelay+
+				    		1000;
+	
+			    		}
+						Logger.logDebug("Start static touch led pulse... (interval: " + pulseInterval + ", delay: " + stopStaticPulseDelay + ", timeout: " + pulseTimeout + ")");
+						TouchLEDStaticPulseReceiver.reset();
+						startAlarm(this, TouchLEDStaticPulseReceiver.START_STATIC_PULSE, TouchLEDStaticPulseReceiver.class, 0, pulseInterval, ALARM_TYPE_BROADCAST, false);
+						startAlarm(this, TouchLEDStaticPulseReceiver.STOP_STATIC_PULSE, TouchLEDStaticPulseReceiver.class, stopStaticPulseDelay, pulseInterval, ALARM_TYPE_BROADCAST, false);
+					} else { // constant light
+						int maxLEDStrength = preferences.getInt(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_BRIGHTNESS, Constants.DEFAULT_PULSE_MAX_LED_STRENGTH);
+						touchLED.set(TouchLED.SEARCH, maxLEDStrength);
+					}
+    			}
 
 				// vibrations
 				int vibrateType = MainService.toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_VIBRATION_MODE, String.valueOf(Constants.DEFAULT_VIBRATE_TYPE)), Constants.DEFAULT_VIBRATE_TYPE);
@@ -695,18 +716,21 @@ public class MainService extends Service implements SensorEventListener {
 		pendingNewNotification = false;
 
 		Logger.logDebug("Cancel feedback... (" + pulseKey + ")");
-		int pulseMode = toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_MODE, String.valueOf(Constants.DEFAULT_PULSE_MODE)), Constants.DEFAULT_PULSE_MODE);
-		if (pulseMode == 0 || pulseMode == 3) {
-			TouchLEDService.stopPulse();
-			stopAlarm(this, TouchLEDReceiver.START_PULSE, TouchLEDReceiver.class, ALARM_TYPE_BROADCAST);
-			stopAlarm(this, TouchLEDReceiver.STOP_PULSE, TouchLEDReceiver.class, ALARM_TYPE_BROADCAST);
-			TouchLEDService.waitUntilDone(10*1000);
-		} else if (pulseMode == 1 || pulseMode == 4) {
-			TouchLEDStaticPulseReceiver.stopPulse();
-			stopAlarm(this, TouchLEDStaticPulseReceiver.START_STATIC_PULSE, TouchLEDStaticPulseReceiver.class, ALARM_TYPE_BROADCAST);
-			stopAlarm(this, TouchLEDStaticPulseReceiver.STOP_STATIC_PULSE, TouchLEDStaticPulseReceiver.class, ALARM_TYPE_BROADCAST);
-		} else {
-			
+		// stop leds
+		if (touchLED.isUsable()) {
+			int pulseMode = toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_MODE, String.valueOf(Constants.DEFAULT_PULSE_MODE)), Constants.DEFAULT_PULSE_MODE);
+			if (pulseMode == 0 || pulseMode == 3) {
+				TouchLEDService.stopPulse();
+				stopAlarm(this, TouchLEDReceiver.START_PULSE, TouchLEDReceiver.class, ALARM_TYPE_BROADCAST);
+				stopAlarm(this, TouchLEDReceiver.STOP_PULSE, TouchLEDReceiver.class, ALARM_TYPE_BROADCAST);
+				TouchLEDService.waitUntilDone(10*1000);
+			} else if (pulseMode == 1 || pulseMode == 4) {
+				TouchLEDStaticPulseReceiver.stopPulse();
+				stopAlarm(this, TouchLEDStaticPulseReceiver.START_STATIC_PULSE, TouchLEDStaticPulseReceiver.class, ALARM_TYPE_BROADCAST);
+				stopAlarm(this, TouchLEDStaticPulseReceiver.STOP_STATIC_PULSE, TouchLEDStaticPulseReceiver.class, ALARM_TYPE_BROADCAST);
+			} else {
+				
+			}
 		}
 		
 		// stop vibrator
@@ -717,42 +741,47 @@ public class MainService extends Service implements SensorEventListener {
 		NotificationRingtoneReceiver.stop();
 		MainService.stopAlarm(this, NotificationRingtoneReceiver.ACTION_START_NOTIFICATION_RINGTONE, NotificationRingtoneReceiver.class, ALARM_TYPE_BROADCAST);
 		
-		int touchLEDState = touchLEDProperties.getInt(PROPERTY_TOUCH_LED_STATE, STATE_TOUCH_LED_INACTIVE);
-		if (touchLEDState == STATE_TOUCH_LED_PULSE) {
-			if (touchLED instanceof TouchLEDP970) {
-				((TouchLEDP970)touchLED).setOnOffLED(false);
-			} else {
-				touchLED.set(TouchLED.SEARCH, touchLED.getMin());
+		if (touchLED.isUsable()) {
+			int touchLEDState = touchLEDProperties.getInt(PROPERTY_TOUCH_LED_STATE, STATE_TOUCH_LED_INACTIVE);
+			if (touchLEDState == STATE_TOUCH_LED_PULSE) {
+				if (touchLED instanceof TouchLEDP970) {
+					((TouchLEDP970)touchLED).setOnOffLED(false);
+				} else {
+					touchLED.set(TouchLED.SEARCH, touchLED.getMin());
+				}
+				touchLEDProperties.putInt(PROPERTY_TOUCH_LED_STATE, STATE_TOUCH_LED_CANCELLED);
 			}
-			touchLEDProperties.putInt(PROPERTY_TOUCH_LED_STATE, STATE_TOUCH_LED_CANCELLED);
+			touchLEDProperties.save();
 		}
-		touchLEDProperties.save();
 		deviceCharging = false;
 		
 	}
 	
 	public void stopFeedback(String pulseKey) {
 		Logger.logDebug("Stop feedback... (" + pulseKey + ")");
-		int pulseMode = toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_MODE, String.valueOf(Constants.DEFAULT_PULSE_MODE)), Constants.DEFAULT_PULSE_MODE);
 		cancelFeedback(pulseKey);
-		stopAlarm(this, ACTION_CANCEL_PULSE, MainService.class, ALARM_TYPE_SERVICE);
-		if (pulseMode == 0 || pulseMode == 3) {
-			stopService(new Intent(this, TouchLEDService.class));
-			TouchLEDService.stopPulse();
-			TouchLEDService.waitUntilDone(10*1000);
-		}
-		
-		PowerManager pm = (PowerManager)getSystemService(POWER_SERVICE);
-
-		int touchLEDState = touchLEDProperties.getInt(PROPERTY_TOUCH_LED_STATE, STATE_TOUCH_LED_INACTIVE);
-		if (touchLEDState == STATE_TOUCH_LED_CANCELLED && pm.isScreenOn()) {
-			int defaultValue = preferences.getInt("seekBarTouchLEDStrengthPref", Constants.DEFAULT_TOUCH_LED_STRENGTH);
-			Logger.logDebug("Resetting default value: " + defaultValue);
-			if (!(touchLED instanceof TouchLEDP970)) {
-				touchLED.set(TouchLED.SEARCH, defaultValue);
+		// stop leds
+		if (touchLED.isUsable()) {
+			int pulseMode = toInt(preferences.getString(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_MODE, String.valueOf(Constants.DEFAULT_PULSE_MODE)), Constants.DEFAULT_PULSE_MODE);
+			stopAlarm(this, ACTION_CANCEL_PULSE, MainService.class, ALARM_TYPE_SERVICE);
+			if (pulseMode == 0 || pulseMode == 3) {
+				stopService(new Intent(this, TouchLEDService.class));
+				TouchLEDService.stopPulse();
+				TouchLEDService.waitUntilDone(10*1000);
 			}
-			touchLEDProperties.putInt(PROPERTY_TOUCH_LED_STATE, STATE_TOUCH_LED_INACTIVE);
-			touchLEDProperties.save();
+			
+			PowerManager pm = (PowerManager)getSystemService(POWER_SERVICE);
+	
+			int touchLEDState = touchLEDProperties.getInt(PROPERTY_TOUCH_LED_STATE, STATE_TOUCH_LED_INACTIVE);
+			if (touchLEDState == STATE_TOUCH_LED_CANCELLED && pm.isScreenOn()) {
+				int defaultValue = preferences.getInt("seekBarTouchLEDStrengthPref", Constants.DEFAULT_TOUCH_LED_STRENGTH);
+				Logger.logDebug("Resetting default value: " + defaultValue);
+				if (!(touchLED instanceof TouchLEDP970)) {
+					touchLED.set(TouchLED.SEARCH, defaultValue);
+				}
+				touchLEDProperties.putInt(PROPERTY_TOUCH_LED_STATE, STATE_TOUCH_LED_INACTIVE);
+				touchLEDProperties.save();
+			}
 		}
 		
 		activeNotifications.clear();
@@ -1023,6 +1052,9 @@ public class MainService extends Service implements SensorEventListener {
 	}
 	
 	private void updateLEDChargeStatus(int plugged, int level, int scale) {
+		if (!touchLED.isUsable()) {
+			return;
+		}
 		PowerManager pm = (PowerManager)getSystemService(POWER_SERVICE);
 		if (!pm.isScreenOn()) {
 			boolean currentDeviceCharging = deviceCharging;
