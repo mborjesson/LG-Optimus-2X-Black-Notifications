@@ -19,6 +19,7 @@ package com.martinborjesson.o2xtouchlednotifications.ui;
 import java.io.*;
 import java.util.*;
 
+import android.accounts.*;
 import android.app.*;
 import android.content.*;
 import android.content.DialogInterface.OnCancelListener;
@@ -219,6 +220,27 @@ public class MainPreferences extends PreferenceActivity implements OnSharedPrefe
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         
         touchLED = TouchLED.getTouchLED();
+        
+		// check if gmail works
+        if (!sharedPreferences.getBoolean("fixGMailNoPermissions", Constants.DEFAULT_FIX_GMAIL_NO_PERMISSIONS)) {
+	    	boolean gmailAvailable = false;
+	    	
+			AccountManager am = AccountManager.get(this);
+			Account[] accounts = am.getAccountsByType("com.google");
+			for (Account account : accounts) {
+		    	GmailContentObserver gmailObserver = new GmailContentObserver(getContentResolver(), this, account);
+		    	if (gmailObserver.isAvailable(this)) {
+		    		gmailAvailable = true;
+		    	}
+			}
+			if (!gmailAvailable) {
+				Editor edit = sharedPreferences.edit();
+				edit.putBoolean("fixGMailNoPermissions", true);
+				edit.commit();
+	
+				askIfNotEnabledInAccessibilitySettings(R.string.dialog_message_no_gmail_permissions);
+			}
+        }
 
         boolean doInit = true;
     	if (!touchLED.hasProperPermissions()) {
@@ -287,13 +309,13 @@ public class MainPreferences extends PreferenceActivity implements OnSharedPrefe
 
         
         // see if the touch led strength is set, if not set it to the current value
-        if (!sharedPreferences.contains("seekBarTouchLEDStrengthPref")) {
+        if (touchLED.isValid() && !sharedPreferences.contains("seekBarTouchLEDStrengthPref")) {
         	Editor editor = sharedPreferences.edit();
         	editor.putInt("seekBarTouchLEDStrengthPref", touchLED.getCurrent());
         	editor.commit();
         }
 
-        if (touchLED instanceof TouchLEDNone) {
+        if (!touchLED.isValid()) {
         	AlertDialog.Builder builder = new AlertDialog.Builder(this);
         	builder.setTitle(R.string.dialog_title_unable_to_start)
         			.setMessage(R.string.dialog_message_unable_to_start)
@@ -305,9 +327,6 @@ public class MainPreferences extends PreferenceActivity implements OnSharedPrefe
         			});
         	AlertDialog alert = builder.create();
         	alert.show();
-        	CheckBoxPreference p = (CheckBoxPreference)findPreference("checkBoxServiceEnabled");
-        	p.setChecked(false);
-        	p.setEnabled(false);
         }
 
     	
@@ -547,10 +566,10 @@ public class MainPreferences extends PreferenceActivity implements OnSharedPrefe
     		}
     		
     		{
-	    		Preference developer = new Preference(this);
-	    		developer.setTitle(R.string.preference_title_about_developer);
-				developer.setSummary("Martin Börjesson"); // not changeable :)
-				about.addPreference(developer);
+    			Preference device = new Preference(this);
+    			device.setTitle(R.string.preference_title_about_device);
+    			device.setSummary(TouchLED.getTouchLED().getDeviceName());
+    			about.addPreference(device);
     		}
     		
     		String language = getString(R.string.translator_language);
@@ -894,6 +913,9 @@ public class MainPreferences extends PreferenceActivity implements OnSharedPrefe
 	}
 	
 	private void updateTouchLEDButtonsOptions(int mode, String key) {
+		if (!TouchLED.getTouchLED().isUsable()) {
+			return;
+		}
 		Preference fadeInP = findPreference(key + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FADE_IN_TIME);
 		Preference fullyLitP = findPreference(key + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FULLY_LIT_TIME);
 		Preference fadeOutP = findPreference(key + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FADE_OUT_TIME);
@@ -935,130 +957,132 @@ public class MainPreferences extends PreferenceActivity implements OnSharedPrefe
 		});
     	screen.addPreference(testButton);
 
-		PreferenceCategory touchLEDCategory = new PreferenceCategory(this);
-		touchLEDCategory.setTitle(R.string.preference_title_feedback_touch_led);
-		screen.addPreference(touchLEDCategory);
-		{
-			ListPreference pref = new ListPreference(this);
-			pref.setKey(key + "." + Constants.PREFERENCE_KEY_TOUCH_LED_MODE);
-			pref.setTitle(R.string.preference_title_feedback_touch_led_mode);
-			pref.setDefaultValue(String.valueOf(Constants.DEFAULT_PULSE_MODE));
-			pref.setEntries(R.array.pulse_type_entries);
-			pref.setEntryValues(R.array.pulse_type_values);
-			PreferenceSummaryChanger changer = new PreferenceSummaryChanger(pref, "%s", new PreferenceSummaryChanger.OnSummaryChangeListener() {
-				
-				@Override
-				public String onValueChange(Preference preference, String value) {
-					return null;
-				}
-				
-				@Override
-				public String onSummaryChange(Preference preference, String value) {
-//					if (value.equals("0")) {
-//						return "Fading pulse";
-//					} else if (value.equals("1")) {
-//						return "Non-fading pulse";
-//					} else if (value.equals("2")) {
-//						return "Constant";
-//					}
+    	if (TouchLED.getTouchLED().isUsable()) {
+			PreferenceCategory touchLEDCategory = new PreferenceCategory(this);
+			touchLEDCategory.setTitle(R.string.preference_title_feedback_touch_led);
+			screen.addPreference(touchLEDCategory);
+			{
+				ListPreference pref = new ListPreference(this);
+				pref.setKey(key + "." + Constants.PREFERENCE_KEY_TOUCH_LED_MODE);
+				pref.setTitle(R.string.preference_title_feedback_touch_led_mode);
+				pref.setDefaultValue(String.valueOf(Constants.DEFAULT_PULSE_MODE));
+				pref.setEntries(R.array.pulse_type_entries);
+				pref.setEntryValues(R.array.pulse_type_values);
+				PreferenceSummaryChanger changer = new PreferenceSummaryChanger(pref, "%s", new PreferenceSummaryChanger.OnSummaryChangeListener() {
 					
-					for (int i = 0; i < pulseValues.length; ++i) {
-						if (pulseValues[i].equals(value)) {
-							return pulseEntries[i];
-						}
+					@Override
+					public String onValueChange(Preference preference, String value) {
+						return null;
 					}
 					
-					return null;
-				}
+					@Override
+					public String onSummaryChange(Preference preference, String value) {
+	//					if (value.equals("0")) {
+	//						return "Fading pulse";
+	//					} else if (value.equals("1")) {
+	//						return "Non-fading pulse";
+	//					} else if (value.equals("2")) {
+	//						return "Constant";
+	//					}
+						
+						for (int i = 0; i < pulseValues.length; ++i) {
+							if (pulseValues[i].equals(value)) {
+								return pulseEntries[i];
+							}
+						}
+						
+						return null;
+					}
+					
+					@Override
+					public boolean onPreferenceChange(Preference preference, Object newValue) {
+						updateTouchLEDButtonsOptions(Integer.valueOf(String.valueOf(newValue)), currentPulseKey);
+						return true;
+					}
+				});
+				pref.setSummary(changer.getSummary(sharedPreferences.getString(pref.getKey(), String.valueOf(Constants.DEFAULT_PULSE_MODE))));
+				pref.setOnPreferenceChangeListener(changer);
+				touchLEDCategory.addPreference(pref);
+			}
+	
+			touchLEDCategory.addPreference(createEditDigitsPreference(key + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FADE_IN_TIME, getString(R.string.preference_title_feedback_touch_led_fade_in_time), getString(R.string.dialog_title_feedback_touch_led_fade_in_time), String.valueOf(Constants.DEFAULT_PULSE_FADE_IN), getString(R.string.preference_summary_feedback_touch_led_time)));
+			touchLEDCategory.addPreference(createEditDigitsPreference(key + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FULLY_LIT_TIME, getString(R.string.preference_title_feedback_touch_led_fully_lit_time), getString(R.string.dialog_title_feedback_touch_led_fully_lit_time), String.valueOf(Constants.DEFAULT_PULSE_ACTIVE), getString(R.string.preference_summary_feedback_touch_led_time)));
+			touchLEDCategory.addPreference(createEditDigitsPreference(key + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FADE_OUT_TIME, getString(R.string.preference_title_feedback_touch_led_fade_out_time), getString(R.string.dialog_title_feedback_touch_led_fade_out_time), String.valueOf(Constants.DEFAULT_PULSE_FADE_OUT), getString(R.string.preference_summary_feedback_touch_led_time)));
+			touchLEDCategory.addPreference(createEditDigitsPreference(key + "." + Constants.PREFERENCE_KEY_TOUCH_LED_INACTIVE_TIME, getString(R.string.preference_title_feedback_touch_led_inactive_time), getString(R.string.dialog_title_feedback_touch_led_inactive_time), String.valueOf(Constants.DEFAULT_PULSE_INACTIVE), getString(R.string.preference_summary_feedback_touch_led_time)));
+    	
+			SeekBarPreference seekBar = new SeekBarPreference(this);
+			seekBar.setKey(key + "." + Constants.PREFERENCE_KEY_TOUCH_LED_BRIGHTNESS);
+			seekBar.setTitle(R.string.preference_title_feedback_touch_led_brightness);
+			seekBar.setDialogTitle(seekBar.getTitle());
+			seekBar.setMax(touchLED.getMax());
+			seekBar.setDefaultValue(Constants.DEFAULT_PULSE_MAX_LED_STRENGTH);
+			seekBar.setOnPreferenceClickListener(new OnPreferenceClickListener() {
 				
 				@Override
-				public boolean onPreferenceChange(Preference preference, Object newValue) {
-					updateTouchLEDButtonsOptions(Integer.valueOf(String.valueOf(newValue)), currentPulseKey);
+				public boolean onPreferenceClick(Preference preference) {
+					touchLEDStrength = touchLED.getCurrent();
+					touchLED.setAll(((SeekBarPreference)preference).getProgress());
 					return true;
 				}
 			});
-			pref.setSummary(changer.getSummary(sharedPreferences.getString(pref.getKey(), String.valueOf(Constants.DEFAULT_PULSE_MODE))));
-			pref.setOnPreferenceChangeListener(changer);
-			touchLEDCategory.addPreference(pref);
-		}
-
-		touchLEDCategory.addPreference(createEditDigitsPreference(key + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FADE_IN_TIME, getString(R.string.preference_title_feedback_touch_led_fade_in_time), getString(R.string.dialog_title_feedback_touch_led_fade_in_time), String.valueOf(Constants.DEFAULT_PULSE_FADE_IN), getString(R.string.preference_summary_feedback_touch_led_time)));
-		touchLEDCategory.addPreference(createEditDigitsPreference(key + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FULLY_LIT_TIME, getString(R.string.preference_title_feedback_touch_led_fully_lit_time), getString(R.string.dialog_title_feedback_touch_led_fully_lit_time), String.valueOf(Constants.DEFAULT_PULSE_ACTIVE), getString(R.string.preference_summary_feedback_touch_led_time)));
-		touchLEDCategory.addPreference(createEditDigitsPreference(key + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FADE_OUT_TIME, getString(R.string.preference_title_feedback_touch_led_fade_out_time), getString(R.string.dialog_title_feedback_touch_led_fade_out_time), String.valueOf(Constants.DEFAULT_PULSE_FADE_OUT), getString(R.string.preference_summary_feedback_touch_led_time)));
-		touchLEDCategory.addPreference(createEditDigitsPreference(key + "." + Constants.PREFERENCE_KEY_TOUCH_LED_INACTIVE_TIME, getString(R.string.preference_title_feedback_touch_led_inactive_time), getString(R.string.dialog_title_feedback_touch_led_inactive_time), String.valueOf(Constants.DEFAULT_PULSE_INACTIVE), getString(R.string.preference_summary_feedback_touch_led_time)));
-		
-		SeekBarPreference seekBar = new SeekBarPreference(this);
-		seekBar.setKey(key + "." + Constants.PREFERENCE_KEY_TOUCH_LED_BRIGHTNESS);
-		seekBar.setTitle(R.string.preference_title_feedback_touch_led_brightness);
-		seekBar.setDialogTitle(seekBar.getTitle());
-		seekBar.setMax(touchLED.getMax());
-		seekBar.setDefaultValue(Constants.DEFAULT_PULSE_MAX_LED_STRENGTH);
-		seekBar.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-			
-			@Override
-			public boolean onPreferenceClick(Preference preference) {
-				touchLEDStrength = touchLED.getCurrent();
-				touchLED.setAll(((SeekBarPreference)preference).getProgress());
-				return true;
-			}
-		});
-		seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-			
-			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
+			seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 				
-			}
-			
-			@Override
-			public void onStartTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress,
-					boolean fromUser) {
-				if (fromUser) {
-					touchLED.setAll(progress);
+				@Override
+				public void onStopTrackingTouch(SeekBar seekBar) {
+					// TODO Auto-generated method stub
+					
 				}
-			}
-		});
-		
-		seekBar.setOnNoChangeListener(new OnNoChangeListener() {
+				
+				@Override
+				public void onStartTrackingTouch(SeekBar seekBar) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void onProgressChanged(SeekBar seekBar, int progress,
+						boolean fromUser) {
+					if (fromUser) {
+						touchLED.setAll(progress);
+					}
+				}
+			});
 			
-			@Override
-			public void onNoChange(Preference preference) {
-				touchLED.setAll(touchLEDStrength);
-			}
-		});
-		PreferenceSummaryChanger seekBarChanger = new PreferenceSummaryChanger(seekBar, getString(R.string.preference_summary_feedback_touch_led_brightness), new PreferenceSummaryChanger.OnSummaryChangeListener() {
-			
-			@Override
-			public String onValueChange(Preference preference, String value) {
-				try {
-					float val = Float.valueOf(value);
-					return String.valueOf((int)(100*val/touchLED.getMax()));
-				} catch (NumberFormatException e) {}
-				return null;
-			}
-			
-			@Override
-			public String onSummaryChange(Preference preference, String summary) {
-				return null;
-			}
-
-			@Override
-			public boolean onPreferenceChange(Preference preference,
-					Object newValue) {
-				touchLED.setAll(touchLEDStrength);
-				return true;
-			}
-		});
-		seekBar.setSummary(seekBarChanger.getSummary(String.valueOf(sharedPreferences.getInt(seekBar.getKey(), Constants.DEFAULT_TOUCH_LED_STRENGTH))));
-		seekBar.setOnPreferenceChangeListener(seekBarChanger);
-
-		touchLEDCategory.addPreference(seekBar);
+			seekBar.setOnNoChangeListener(new OnNoChangeListener() {
+				
+				@Override
+				public void onNoChange(Preference preference) {
+					touchLED.setAll(touchLEDStrength);
+				}
+			});
+			PreferenceSummaryChanger seekBarChanger = new PreferenceSummaryChanger(seekBar, getString(R.string.preference_summary_feedback_touch_led_brightness), new PreferenceSummaryChanger.OnSummaryChangeListener() {
+				
+				@Override
+				public String onValueChange(Preference preference, String value) {
+					try {
+						float val = Float.valueOf(value);
+						return String.valueOf((int)(100*val/touchLED.getMax()));
+					} catch (NumberFormatException e) {}
+					return null;
+				}
+				
+				@Override
+				public String onSummaryChange(Preference preference, String summary) {
+					return null;
+				}
+	
+				@Override
+				public boolean onPreferenceChange(Preference preference,
+						Object newValue) {
+					touchLED.setAll(touchLEDStrength);
+					return true;
+				}
+			});
+			seekBar.setSummary(seekBarChanger.getSummary(String.valueOf(sharedPreferences.getInt(seekBar.getKey(), Constants.DEFAULT_TOUCH_LED_STRENGTH))));
+			seekBar.setOnPreferenceChangeListener(seekBarChanger);
+	
+			touchLEDCategory.addPreference(seekBar);
+    	}
 
 		PreferenceCategory vibratorCategory = new PreferenceCategory(this);
 		vibratorCategory.setTitle(R.string.preference_title_feedback_vibrator);
@@ -1410,9 +1434,17 @@ public class MainPreferences extends PreferenceActivity implements OnSharedPrefe
 	 * @return
 	 */
 	private boolean askIfNotEnabledInAccessibilitySettings() {
+		return askIfNotEnabledInAccessibilitySettings(R.string.dialog_message_enable_accessibility);
+	}
+	
+	/**
+	 * If the app is not enabled in the accessibility settings, popup an alert and return false, otherwise show nothing and return true
+	 * @return
+	 */
+	private boolean askIfNotEnabledInAccessibilitySettings(int message) {
 		if (!enabledInAccessibilitySettings()) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage(R.string.dialog_message_enable_accessibility)
+			builder.setMessage(message)
 			       .setCancelable(false)
 			       .setPositiveButton(android.R.string.yes, new OnClickListener() {
 					
