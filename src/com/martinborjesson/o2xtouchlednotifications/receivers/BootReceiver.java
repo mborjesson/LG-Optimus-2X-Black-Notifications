@@ -31,17 +31,17 @@ import com.martinborjesson.o2xtouchlednotifications.utils.*;
 public class BootReceiver extends BroadcastReceiver {
 
 	public void onReceive(Context context, Intent intent) {
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		FeedbackService.performFixes(context); // perform special fixes if needed
 		if (TouchLED.getTouchLED().hasProperPermissions()) {
-			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 			if (TouchLED.getTouchLED().canChangeLEDBrightness() && prefs.getBoolean("checkBoxTouchLEDStrengthSetOnBootPref", Constants.DEFAULT_SET_TOUCH_LED_STRENGTH_ON_BOOT)) {
 	    		int value = prefs.getInt("seekBarTouchLEDStrengthPref", Constants.DEFAULT_TOUCH_LED_STRENGTH);
 				Logger.logDebug("Loading stored value for touch LED: " + value);
 				TouchLED.getTouchLED().setAll(value);
 			}
-			if (prefs.getBoolean("checkboxAutostartService", Constants.DEFAULT_AUTOSTART_SERVICE)) {
-				FeedbackService.startService(context, null);
-			}
+		}
+		if (prefs.getBoolean("checkboxAutostartService", Constants.DEFAULT_AUTOSTART_SERVICE)) {
+			FeedbackService.startService(context, null);
 		}
 	}
 }
