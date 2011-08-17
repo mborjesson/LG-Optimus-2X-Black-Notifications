@@ -45,6 +45,7 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
 	private final static int MAX_LOG_NOTIFICATIONS = 20;
 	
 	public static final String ACTION_READ_SETTINGS = AccessibilityService.class.getName() + ".ACTION_READ_SETTINGS";
+	public static final String ACTION_ADD = AccessibilityService.class.getName() + ".ACTION_ADD";
 	public static final String ACTION_ADD_EXCLUDED = AccessibilityService.class.getName() + ".ACTION_ADD_EXCLUDED";
 
 	private SerializableArrayList<String> notificationPackageNames = null;
@@ -65,10 +66,16 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
 		if (intent != null) {
 			if (intent.getAction().equals(ACTION_READ_SETTINGS)) {
 				readSettings();
+			} else if (intent.getAction().equals(ACTION_ADD)) {
+				String packageName = intent.getStringExtra("packageName");
+				if (packageName != null) {
+					Logger.logDebug("[Accessibility] Adding package: " + packageName);
+					notificationPackageNames.add(packageName);
+				}
 			} else if (intent.getAction().equals(ACTION_ADD_EXCLUDED)) {
 				String packageName = intent.getStringExtra("packageName");
 				if (packageName != null) {
-					Logger.logDebug("Adding excluded package: " + packageName);
+					Logger.logDebug("[Accessibility] Adding excluded package: " + packageName);
 					excludedNotificationPackageNames.add(packageName);
 				}
 			}
