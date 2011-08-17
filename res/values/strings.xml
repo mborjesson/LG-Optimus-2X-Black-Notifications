@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">LG 2X/Black Notifications</string>
+    <string name="app_name">LG 2X/Black/3D Notifications</string>
     
     <string name="translator_language">English</string> <!-- translated language -->
     <string name="translator_name"></string> <!-- your name, leave empty if you do not want to be credited -->
@@ -154,7 +154,7 @@
     <string name="preference_title_about">About</string>
     <string name="preference_title_show_changelog">Show changelog</string>
     <string name="preference_title_about_version">Version</string>
-    <string name="preference_title_about_developer">Developer</string>
+    <string name="preference_title_about_device">Detected device</string>
     <string name="preference_title_about_translator">Translator</string>
     
     <string name="preference_title_customized_feedback">Customized feedback</string>
@@ -163,8 +163,8 @@
     <string name="preference_title_customized_feedback_options">Feedback options</string>
     <string name="preference_summary_customized_feedback_options">Change feedback options</string>
     
-    <string name="dialog_title_unable_to_start">Unable to start</string>
-    <string name="dialog_message_unable_to_start">This application only works with LG Optimus 2X and Optimus Black.</string>
+    <string name="dialog_title_unable_to_start">Unsupported device</string>
+    <string name="dialog_message_unable_to_start">This application can not modify the LEDs for this device. The options for LEDs has been disabled.</string>
 
     <string name="toast_monitored_activites_removed">Monitored activities removed</string>
     <string name="toast_excluded_activites_removed">Excluded activities removed</string>
@@ -219,4 +219,7 @@
     
     <string name="dialog_message_has_root_do_chmod">The app detected that it has no read or write access to a required file, do you wish to fix this ?\nAllowing this will also perform this fix on boot without asking. This action requires root.</string>
     <string name="dialog_message_no_root">The app detected that it has no read or write access to a required file. This can be fixed but this action requires the device to be rooted. This has to be done before the app can be used properly.</string>
+    
+    <string name="dialog_message_no_gmail_permissions">The app did not have permission to check GMail, probably due to the GMail 2.3.5-update. To enable GMail again accessibility has to be enabled. Do you want to do that now ?</string>
+    
 </resources>
