@@ -33,6 +33,7 @@ public class AppProperties {
 	}
 	
 	public void load() {
+		if (properties == null || context == null || fileName == null) return;
 		try {
 			properties.load(context.openFileInput(fileName));
 		} catch (FileNotFoundException e) {
@@ -42,6 +43,7 @@ public class AppProperties {
 	}
 	
 	public void save() {
+		if (properties == null || context == null || fileName == null) return;
 		try {
 			properties.store(context.openFileOutput(fileName, Context.MODE_PRIVATE), null);
 		} catch (FileNotFoundException e) {
