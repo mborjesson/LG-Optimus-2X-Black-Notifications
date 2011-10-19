@@ -1,3 +1,7 @@
+1.1.1 (9 October 2011)
+
+* More reliable way to check if root exists.
+
 1.1 (17 August 2011)
 
 * Support for LG Optimus 3D (no fading and requires root). Thanks to Adam Chylek !
