@@ -24,15 +24,55 @@ public class SuperUser {
 	 * @return
 	 */
 	static public boolean hasSuperUser() {
+		boolean superUser = false;
+		java.lang.Process process = null;
+		InputStream in = null;
+		ByteArrayOutputStream os = null;
 		try { // Run Script
-	        java.lang.Process process = Runtime.getRuntime().exec("which su");
-	        return process.waitFor() == 0;
+	        process = Runtime.getRuntime().exec(new String[] { "sh", "-c", "echo $PATH" });
+	        in = process.getInputStream();
+	        os = new ByteArrayOutputStream(1<<16);
+	        int read = -1;
+	    	while ((read = in.read()) != -1) {
+	    		os.write(read);
+	    	}
+	    	
+	    	String[] paths = new String(os.toByteArray()).split(":");
+	    	
+	    	for (String s : paths) {
+	    		File f = new File(s.trim() + "/su");
+	    		if (f.exists()) {
+	    			superUser = true;
+	    			break;
+	    		}
+	    	}
+
 	    } catch (IOException ex) {
 	        ex.printStackTrace();
+	    } finally {
+	    	if (in != null) {
+	    		try {
+					in.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+	    	}
+	    	if (os != null) {
+	    		try {
+					os.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+	    	}
+	    }
+	    try {
+	        if (process != null)
+	            process.waitFor();
 	    } catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		return false;
+	        e.printStackTrace();
+	    }
+		
+	    return superUser;
 	}
 	
 	/**
