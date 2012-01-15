@@ -572,6 +572,13 @@ public class MainPreferences extends PreferenceActivity implements OnSharedPrefe
     			about.addPreference(device);
     		}
     		
+    		{
+	    		Preference developer = new Preference(this);
+	    		developer.setTitle(R.string.preference_title_about_developer);
+				developer.setSummary("Martin Börjesson"); // not changeable :)
+				about.addPreference(developer);
+    		}
+    		
     		String language = getString(R.string.translator_language);
     		String translatorName = getString(R.string.translator_name);
     		if (language.length() > 0 && translatorName.length() > 0) {
@@ -1734,7 +1741,7 @@ public class MainPreferences extends PreferenceActivity implements OnSharedPrefe
 	private void showNotificationRingtones() {
 		Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
 		intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_NOTIFICATION);
-		intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, "Select notification sound");
+		intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, R.string.preference_title_feedback_notification_ringtone_select);
 		String uriString = sharedPreferences.getString(currentPulseKey + "." + Constants.PREFERENCE_KEY_NOTIFICATION_RINGTONE, null);
 		Uri uri = null;
 		if (uriString != null) {

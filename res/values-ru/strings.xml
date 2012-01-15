@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LG 2X/Black/3D Уведомления</string>
+    
+    <string name="translator_language">Russian</string> <!-- translated language -->
+    <string name="translator_name">Savin</string> <!-- your name, leave empty if you do not want to be credited -->
+    
+    <string name="preference_title_main_options">Основные настройки</string>
+    <string name="preference_title_enable">Включено</string>
+
+    <string name="preference_title_notifications">События</string> <!-- more accurate translation in Russian: context mean "Events" -->
+    <string name="preference_title_gmail">Gmail</string>
+    <string name="preference_title_smsmms">SMS/MMS</string>
+    <string name="preference_title_missed_calls">Пропущенные звонки</string>
+    <string name="preference_title_monitored_activities">Отслеживаемые приложения</string>
+    <string name="preference_title_select_monitored_activities">Список наблюдаемых приложений</string>
+
+    <string name="preference_summary_select_monitored_activities">Список приложений на уведомления которых следует реагировать</string>
+    <string name="preference_title_clear_monitored_activities">Очистить список приложений</string>
+    <string name="preference_summary_clear_monitored_activities">Очистить весь список наблюдаемых приложений</string>
+    <string name="preference_title_notifications_with_lights">Уведомления с LED индикацией</string>
+    <string name="preference_summaryon_notifications_with_lights">Использовать для всех уведомлений индикаторами LED</string>
+    <string name="preference_summaryoff_notifications_with_lights">Не Использовать для всех уведомлений индикаторами LED</string>
+
+    <string name="preference_title_excluded_activities">Исключить приложения</string>
+    <string name="preference_summary_excluded_activities">Задать приложения для которых не следует использовать индикаторы LED</string>
+    <string name="preference_title_clear_excluded_activities">Очистить список исключений</string>
+    <string name="preference_summary_clear_excluded_activities">Очистить весь список исключений LED индикации</string>
+    
+    <string name="preference_title_feedback">Уведомления</string>
+    <string name="preference_title_customize">Настройка</string>
+
+    <string name="preference_title_default_feedback_options">Общие настройки уведомлений</string>
+    <string name="preference_summary_default_feedback_options">Изменить общие настройки уведомлений</string>
+    <string name="preference_title_feedback_notifications">Уведомления</string>
+    <string name="preference_summary_feedback_notifications">Индивидуальные настройки уведомлений для приложения</string>
+    <string name="preference_title_feedback_delay">Задержка</string>
+    <string name="preference_summary_feedback_delay">Изменить настройки</string>
+
+    <string name="dialog_message_feedback_delay">В секундах</string>
+    <string name="dialog_description_feedback_delay">Задержка %s перед запуском</string>
+    <string name="dialog_description_feedback_delay_disabled">Задержка перед запуском отключена</string>
+    <string name="preference_title_feedback_timeout">Таймаут</string>
+    <string name="preference_summary_feedback_timeout">%s часов</string>
+    
+    <string name="preference_title_feedback_notification">Область уведомлений</string> <!-- more accurate translation in Russian: context mean "Notification area (bar)" -->
+
+    <string name="preference_title_feedback_display_notification">Показывать уведомления</string>
+    <string name="preference_summaryon_feedback_display_notification">Отображать в области уведомлений</string>
+    <string name="preference_summaryoff_feedback_display_notification">Не отображать в области уведомлений</string>
+    <string name="preference_title_feedback_always_display_notification">Отображать всегда</string>
+    <string name="preference_summaryon_feedback_always_display_notification">Отображать всегда</string>
+    <string name="preference_summaryoff_feedback_always_display_notification">Отображать только при наличии уведомлений</string>
+
+    <string name="preference_title_feedback_display_notification_activity">Отображение приложений</string>
+    <string name="preference_summaryon_feedback_display_notification_activity">Показывать приложение, которое вызвало последнее уведомление</string>
+    <string name="preference_summaryoff_feedback_display_notification_activity">Не показывать приложение, которое вызвало последнее уведомление</string>
+    
+    <string name="preference_title_miscellaneous_options">Другие настройки</string>
+    <string name="preference_title_miscellaneous">Разное</string>
+    <string name="preference_title_miscellaneous_accelerometer">Акселерометр</string>
+
+    <string name="preference_summary_miscellaneous_accelerometer">Использование акселерометра для обнаружения активности пользователя</string>
+    <string name="preference_title_miscellaneous_accelerometer_enable_in_lockscreen">Экран блокировки</string>
+    <string name="preference_summaryon_miscellaneous_accelerometer_enable_in_lockscreen">Акселерометр используется на экране блокировки</string>
+    <string name="preference_summaryoff_miscellaneous_accelerometer_enable_in_lockscreen">Акселерометр не используется на экране блокировки</string>
+    <string name="preference_title_miscellaneous_accelerometer_tolerance">Чувствительность акселерометра</string>
+    <string name="preference_summary_miscellaneous_accelerometer_tolerance">Текущее значение: %s</string>
+
+    <string name="preference_title_miscellaneous_sleep">Сон</string>
+    <string name="preference_summary_miscellaneous_sleep">Настройка отключения уведомлений</string>
+    <string name="preference_title_miscellaneous_sleep_enable">Включить режим сна</string>
+    <string name="preference_title_miscellaneous_sleep_off_time">Начало</string> <!-- start sleep mode -->
+    <string name="preference_title_miscellaneous_sleep_on_time">Окончание</string>
+    <string name="preference_title_miscellaneous_touch_led">Сенсорные кнопки</string>
+
+    <string name="preference_summary_miscellaneous_touch_led">Другие настройки для сенсорных кнопок</string>
+    <string name="preference_title_miscellaneous_touch_led_not_available">Недоступно</string>
+    <string name="preference_summary_miscellaneous_touch_led_not_available">Нет доступных настроек для вашего устройства</string>
+    <string name="preference_title_miscellaneous_touch_led_set_on_boot">Установить при загрузке</string>
+    <string name="preference_summaryon_miscellaneous_touch_led_set_on_boot">Установить яркость при загрузке</string>
+    <string name="preference_summaryoff_miscellaneous_touch_led_set_on_boot">Не уставнавливать яркость при загрузке</string>
+
+    <string name="preference_title_miscellaneous_touch_led_brightness">Яркость сенсорных кнопок</string>
+    <string name="preference_summary_miscellaneous_touch_led_brightness">Установка яркости сенсорных кнопок для нормального использования</string>
+    <string name="preference_title_miscellaneous_charging">Зарядка</string>
+    <string name="preference_summary_miscellaneous_charging">Поведение при зарядке</string>
+    <string name="preference_title_miscellaneous_charging_disable_feedback">Отключить уведомления во время зарядки</string>
+    <string name="preference_summaryon_miscellaneous_charging_disable_feedback">Уведомления отключены во время зарядки устройства</string>
+
+    <string name="preference_summaryoff_miscellaneous_charging_disable_feedback">Уведомления включены во время зарядки устройства</string>
+    <string name="preference_title_miscellaneous_charging_charge_indicator">Индикатор зарядки</string>
+    <string name="preference_summaryon_miscellaneous_charging_charge_indicator">Включить индикатор зарядки при выключенном экране, индикатор гаснет когда зарядка завершена</string>
+    <string name="preference_summaryoff_miscellaneous_charging_charge_indicator">Индикатор зарядки отключен</string>
+    <string name="preference_title_miscellaneous_charging_touch_led_brightness">Яркость индикатора во время зарядки</string>
+    <string name="preference_summary_miscellaneous_charging_touch_led_brightness">Установить яркость индикатора зарядки</string>
+
+    <string name="preference_title_miscellaneous_battery_saving">Экономия заряда батареи</string>
+    <string name="preference_summary_miscellaneous_battery_saving">Настройка экономии потребления энергии</string>
+    <string name="preference_title_miscellaneous_battery_saving_disable_feedback">Отключить уведомления при низком заряде батареи</string>
+    <string name="preference_summaryon_miscellaneous_battery_saving_disable_feedback">Уведомления будут отключены при низком заряде батареи</string>
+    <string name="preference_summaryoff_miscellaneous_battery_saving_disable_feedback">Уведомления не будут отключены при низком заряде батареи</string>
+    <string name="preference_title_miscellaneous_battery_saving_disable_feedback_value">Уровень низкого заряда батареи</string>
+
+    <string name="preference_summary_miscellaneous_battery_saving_disable_feedback_value">%s %</string>
+    <string name="preference_title_miscellaneous_autostart">Автозапуск</string>
+    <string name="preference_title_miscellaneous_autostart_service">Автозапуск службы</string>
+    <string name="preference_summaryon_miscellaneous_autostart_service">Служба будет запущена при включении устройства</string>
+    <string name="preference_summaryoff_miscellaneous_autostart_service">Служба не будет запущена при включении устройства</string>
+
+    <string name="preference_title_feedback_test">Проверка</string>
+
+    <string name="preference_summary_feedback_test">Тест уведомлений</string>
+    <string name="dialog_title_feedback_test">Выполняется...</string>
+    <string name="preference_title_feedback_touch_led">LED индикатор</string>
+    <string name="preference_title_feedback_touch_led_mode">Режим</string>
+    <string name="preference_title_feedback_touch_led_fade_in_time">Длительность появления</string>
+    <string name="dialog_title_feedback_touch_led_fade_in_time">Длительность появления в мс</string>
+
+    <string name="preference_title_feedback_touch_led_fully_lit_time">Длительность свечения</string>
+    <string name="dialog_title_feedback_touch_led_fully_lit_time">Длительность свечения в мс</string>
+    <string name="preference_title_feedback_touch_led_fade_out_time">Длительность угасания</string>
+    <string name="dialog_title_feedback_touch_led_fade_out_time">Длительность угасания в мс</string>
+    <string name="preference_title_feedback_touch_led_inactive_time">Длительность неактивности</string>
+    <string name="dialog_title_feedback_touch_led_inactive_time">Длительность неактивности в мс</string>
+
+    <string name="preference_summary_feedback_touch_led_time">%s мс</string>
+    <string name="preference_title_feedback_touch_led_brightness">Яркость индикатора</string>
+    <string name="preference_summary_feedback_touch_led_brightness">%s %</string>
+    <string name="preference_title_feedback_vibrator">Вибрация</string>
+    <string name="preference_title_feedback_vibrator_mode">Режим</string>
+    <string name="preference_title_feedback_vibrator_duration">Длительность</string>
+
+    <string name="dialog_title_feedback_vibrator_duration">В миллисекундах</string>
+    <string name="preference_summary_feedback_vibrator_duration">%s мс</string>
+    <string name="preference_title_feedback_vibrator_delay">Пауза</string>
+    <string name="dialog_title_feedback_vibrator_delay">В миллисекундах</string>
+    <string name="preference_summary_feedback_vibrator_delay">Ждать минимум %s мс между повторами вибрации</string>
+    
+    <string name="preference_title_feedback_notification_ringtone">Рингтон уведомлений</string>
+
+    <string name="preference_title_feedback_notification_ringtone_select">Выбрать рингтон уведомлений</string>
+    <string name="preference_summary_feedback_notification_ringtone_select">Текущий рингтон:</string>
+    <string name="preference_title_feedback_notification_ringtone_mode">Режим</string>
+    <string name="preference_title_feedback_notification_ringtone_duration">Длительность</string>
+    <string name="dialog_title_feedback_notification_ringtone_duration">В миллисекундах</string>
+    <string name="preference_summary_feedback_notification_ringtone_duration">%s мс</string>
+
+    <string name="preference_title_feedback_notification_ringtone_delay">Пауза</string>
+    <string name="dialog_title_feedback_notification_ringtone_delay">В миллисекундах</string>
+    <string name="preference_summary_feedback_notification_ringtone_delay">Ждать минимум %s мс между повторами</string>
+    
+    <string name="preference_title_feedback_other">Другое</string>
+    <string name="preference_title_feedback_other_priority">Приоритет</string>
+    <string name="dialog_title_feedback_other_priority">Большее означает высший приоритет. Уведомления с одним приоритетом заменяют друг друга</string>
+
+    <string name="preference_summary_feedback_other_priority">%s</string>
+    <string name="preference_title_feedback_other_only_light_notification">Только для световых уведомлений</string>
+    <string name="preference_summary_feedback_other_only_light_notification">Реагировать только на световые уведомления. Полезно если приложение постоянно находится в области уведомлений</string>
+    
+    <string name="preference_title_advanced">Дополнительно</string>
+    <string name="preference_title_advanced_log_notifications">Журнал уведомлений</string>
+    <string name="preference_summary_advanced_log_notifications">Включите, если хотите найти приложение которое генерирует определённое уведомление</string>
+
+    <string name="preference_title_advanced_show_logged_notifications">Показать журнал уведомлений</string>
+    <string name="preference_summary_advanced_show_logged_notifications">Показать последние 20 уведомлений, полученных от всех приложений</string>
+    <string name="preference_title_advanced_debug">Отладка (debug)</string>
+    <string name="preference_title_advanced_debug_log">Вести журнал отладки</string>
+    <string name="preference_summaryon_advanced_debug_log">Журнал отладки вкл., используйте adb logcat на вашем устройстве для просмотра</string>
+    <string name="preference_summaryoff_advanced_debug_log">Выкл.</string>
+
+    <string name="preference_title_advanced_debug_log_file">Записывать в файл журнал отладки</string>
+    <string name="preference_summaryon_advanced_debug_log_file">Запись ведётся в файл o2xtouchlednot.log на карте памяти SD</string>
+    <string name="preference_summaryoff_advanced_debug_log_file">Выкл.</string>
+    <string name="preference_title_advanced_debug_clear_log_file">Очистить лог файл</string>
+    
+    <string name="preference_title_other">Другое</string>
+    <string name="preference_title_about">О программе</string>
+
+    <string name="preference_title_show_changelog">Показать список изменений</string>
+    <string name="preference_title_about_version">Версия</string>
+    <string name="preference_title_about_device">Определённое устройство</string>
+    <string name="preference_title_about_developer">Разработчик</string>
+    <string name="preference_title_about_translator">Переводчик</string>
+    
+    <string name="preference_title_customized_feedback">Индивидуальные уведомления</string>
+
+    <string name="preference_summaryon_customized_feedback">Используются индивидуальные настройки</string>
+    <string name="preference_summaryoff_customized_feedback">Используются общие настройки</string>
+    <string name="preference_title_customized_feedback_options">Настройки уведомлений</string>
+    <string name="preference_summary_customized_feedback_options">Изменить настройки уведомлений</string>
+    
+    <string name="dialog_title_unable_to_start">Неподдерживаемое устройство</string>
+    <string name="dialog_message_unable_to_start">Приложение не может управлять индикаторами этого устройства. Настройки индикаторов отключены.</string>
+
+    <string name="toast_monitored_activites_removed">Отслеживаемые приложения очищены</string>
+    <string name="toast_excluded_activites_removed">Список исключений очищен</string>
+    
+    <string name="dialog_title_logged_notifications">Уведомление записано</string>
+    <string name="dialog_message_logged_notifications_package_name">Имя пакета:</string>
+    <string name="dialog_message_logged_notifications_trigger_lights">Сработавший индикатор:</string>
+    <string name="dialog_message_logged_notifications_received">Получено:</string>
+
+    <string name="dialog_message_logged_notifications_none">Нет полученных уведомлений</string>
+    
+    <string name="dialog_message_enable_accessibility">Приложение должно быть разрешено в настройках специальных возможностей, хотите сделать это сейчас ?</string>
+
+    <string name="dialog_title_loading_activities">Загрузка приложений...</string>
+    <string name="dialog_title_select_activities">Выбор приложений</string>
+    <string name="toast_added_activity">Добавлено</string>
+    
+    <string name="time_second">секунда</string>
+
+    <string name="time_seconds">секунд</string>
+    <string name="time_milliseconds">миллисекунд</string>
+    
+    <string name="other_none">None</string>
+    
+    <string name="array_pulse_timeout_1">Никогда</string>
+    <string name="array_pulse_timeout_2">15 минут</string>
+    <string name="array_pulse_timeout_3">30 минут</string>
+
+    <string name="array_pulse_timeout_4">1 час</string>
+    <string name="array_pulse_timeout_5">2 часа</string>
+    <string name="array_pulse_timeout_6">3 часа</string>
+    <string name="array_pulse_timeout_7">4 часа</string>
+    <string name="array_pulse_timeout_8">5 часов</string>
+    <string name="array_pulse_timeout_9">6 часов</string>
+
+    <string name="array_pulse_timeout_10">7 часов</string>
+    <string name="array_pulse_timeout_11">8 часов</string>
+    
+    <string name="array_vibrate_mode_1">Выкл</string>
+    <string name="array_vibrate_mode_2">Один раз</string>
+    <string name="array_vibrate_mode_3">Повторяющийся</string>
+    <string name="array_vibrate_mode_4">Увеличение паузы со временем</string>
+
+    
+    <string name="array_notification_ringtone_mode_1">Выкл</string>
+    <string name="array_notification_ringtone_mode_2">Один раз</string>
+    <string name="array_notification_ringtone_mode_3">Повторяющийся</string>
+    <string name="array_notification_ringtone_mode_4">Увеличение паузы со временем</string>
+    
+    <string name="array_pulse_mode_1">Повтор плавных импульсов</string>
+    <string name="array_pulse_mode_2">Повтор импульсов</string>
+
+    <string name="array_pulse_mode_3">Постоянный</string>
+    <string name="array_pulse_mode_4">1 плавный импульс</string>
+    <string name="array_pulse_mode_5">1 импульс</string>
+    
+    <string name="dialog_title_changelog">Список изменений</string>
+    
+    <string name="dialog_message_has_root_do_chmod">Приложение обнаружило, что оно не может читать или писать нужный файл, желаете это исправить ?\nРазрешение приведёт к таким же исправлениям при включении устройства, без запроса. Это действие требует root прав.</string>
+    <string name="dialog_message_no_root">Приложение обнаружило, что оно не может читать или писать нужный файл. Это может быть исправлено, но для этого действия устройство должно быть рутовано (rooted). Это должно быть сделано, прежде чем приложение сможет быть использовано должным образом.</string>
+
+    
+    <string name="dialog_message_no_gmail_permissions">Приложение не имеет разрешения на проверку GMail, вероятно, это связано с обновлением GMail 2.3.5. Чтобы включить GMail снова нужно включить специальные возможности, хотите сделать это сейчас?</string>
+    
+</resources>

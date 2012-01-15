@@ -5,6 +5,7 @@
     <string name="translator_language">English</string> <!-- translated language -->
     <string name="translator_name"></string> <!-- your name, leave empty if you do not want to be credited -->
     
+    <string name="preference_title_main_options">Main options</string>
     <string name="preference_title_enable">Enable</string>
     <string name="preference_title_notifications">Notifications</string>
     <string name="preference_title_gmail">Gmail</string>
@@ -12,7 +13,7 @@
     <string name="preference_title_missed_calls">Missed calls</string>
     <string name="preference_title_monitored_activities">Monitored activities</string>
     <string name="preference_title_select_monitored_activities">Select monitored activities</string>
-    <string name="preference_summary_select_monitored_activities">Acitivities that will be monitored for notifications</string>
+    <string name="preference_summary_select_monitored_activities">Activities that will be monitored for notifications</string>
     <string name="preference_title_clear_monitored_activities">Clear monitored activities</string>
     <string name="preference_summary_clear_monitored_activities">Removes all monitored activities</string>
     <string name="preference_title_notifications_with_lights">Notifications with lights</string>
@@ -155,6 +156,7 @@
     <string name="preference_title_show_changelog">Show changelog</string>
     <string name="preference_title_about_version">Version</string>
     <string name="preference_title_about_device">Detected device</string>
+    <string name="preference_title_about_developer">Developer</string>
     <string name="preference_title_about_translator">Translator</string>
     
     <string name="preference_title_customized_feedback">Customized feedback</string>

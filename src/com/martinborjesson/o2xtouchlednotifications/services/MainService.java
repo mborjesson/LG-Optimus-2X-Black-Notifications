@@ -776,7 +776,10 @@ public class MainService extends Service implements SensorEventListener {
 			if (touchLEDState == STATE_TOUCH_LED_CANCELLED && pm.isScreenOn()) {
 				int defaultValue = preferences.getInt("seekBarTouchLEDStrengthPref", Constants.DEFAULT_TOUCH_LED_STRENGTH);
 				Logger.logDebug("Resetting default value: " + defaultValue);
-				if (!(touchLED instanceof TouchLEDP970)) {
+				if (touchLED instanceof TouchLEDP970) {
+					//((TouchLEDP970)touchLED).setAll(touchLED.getMax());
+					// TODO: there seems to be a problem when testing the feedback on P970
+				} else {
 					touchLED.set(TouchLED.SEARCH, defaultValue);
 				}
 				touchLEDProperties.putInt(PROPERTY_TOUCH_LED_STATE, STATE_TOUCH_LED_INACTIVE);
