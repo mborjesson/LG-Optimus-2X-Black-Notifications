@@ -82,7 +82,7 @@ abstract public class TouchLED {
 	
 	/**
 	 * Return the required file for this device<br/>
-	 * Only valid for SU660/P990/P999
+	 * Only valid for SU660/P990/P999/P350
 	 * @return
 	 */
 	abstract public File getFile();
@@ -118,7 +118,10 @@ abstract public class TouchLED {
 				touchLED = new TouchLEDP970();
 			} else if (TouchLEDP920.isAvailable()) {
 				touchLED = new TouchLEDP920();
-			} else {
+			} else if (TouchLEDP350.isAvailable()){
+				touchLED = new TouchLEDP350();
+			}
+			else {
 				touchLED = new TouchLEDNone();
 			}
 		}

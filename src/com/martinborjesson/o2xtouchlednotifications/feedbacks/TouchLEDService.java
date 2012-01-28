@@ -23,6 +23,8 @@ import com.commonsware.cwac.wakeful.*;
 import com.martinborjesson.o2xtouchlednotifications.*;
 import com.martinborjesson.o2xtouchlednotifications.services.*;
 import com.martinborjesson.o2xtouchlednotifications.touchled.*;
+import com.martinborjesson.o2xtouchlednotifications.touchled.devices.TouchLEDP350;
+import com.martinborjesson.o2xtouchlednotifications.touchled.devices.TouchLEDP970;
 import com.martinborjesson.o2xtouchlednotifications.utils.*;
 
 public class TouchLEDService extends WakefulIntentService {
@@ -126,7 +128,10 @@ public class TouchLEDService extends WakefulIntentService {
     		fadeInTime = MainService.toInt(prefs.getString(id + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FADE_IN_TIME, String.valueOf(Constants.DEFAULT_PULSE_FADE_IN)), Constants.DEFAULT_PULSE_FADE_IN);
     		fadeOutTime = MainService.toInt(prefs.getString(id + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FADE_OUT_TIME, String.valueOf(Constants.DEFAULT_PULSE_FADE_OUT)), Constants.DEFAULT_PULSE_FADE_OUT);
     		activeTime = MainService.toInt(prefs.getString(id + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FULLY_LIT_TIME, String.valueOf(Constants.DEFAULT_PULSE_ACTIVE)), Constants.DEFAULT_PULSE_ACTIVE);
-    		maxLEDStrength = prefs.getInt(id + "." + Constants.PREFERENCE_KEY_TOUCH_LED_BRIGHTNESS, Constants.DEFAULT_PULSE_MAX_LED_STRENGTH);
+    		//For some reasons on P350 im getting here brightes equal to 20 not 255
+    		//Also I think pulsing is not supported on P350 - full light or none
+    		if(!(TouchLED.getTouchLED() instanceof TouchLEDP350))
+    			maxLEDStrength = prefs.getInt(id + "." + Constants.PREFERENCE_KEY_TOUCH_LED_BRIGHTNESS, Constants.DEFAULT_PULSE_MAX_LED_STRENGTH);
     		Logger.logDebug("Pulse fade in time: " + fadeInTime);
     		Logger.logDebug("Pulse active time: " + activeTime);
     		Logger.logDebug("Pulse fade out time: " + fadeOutTime);
