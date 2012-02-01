@@ -45,6 +45,10 @@ public class TouchLEDP970 extends TouchLED {
 				ONOFF.canRead() && ONOFF.canWrite();
 	}
 
+	@Override
+	public int getDefault() {
+		return DEFAULT_VALUE;
+	}
 
 	@Override
 	public int getMax() {
@@ -124,7 +128,7 @@ public class TouchLEDP970 extends TouchLED {
 
 	@Override
 	public String getDeviceName() {
-		return "P970";
+		return "LG P970";
 	}
 
 	@Override
@@ -133,7 +137,7 @@ public class TouchLEDP970 extends TouchLED {
 	}
 
 	@Override
-	public File getFile() {
-		return null;
+	public File[] getFiles() {
+		return new File[] { ONOFF, BUTTON1, BUTTON2, BUTTON3, BUTTON4 };
 	}
 }

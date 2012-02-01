@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.martinborjesson.o2xtouchlednotifications" android:versionCode="48" android:versionName="1.1.2">
+      package="com.martinborjesson.o2xtouchlednotifications" android:versionName="1.2" android:versionCode="55">
     <uses-sdk android:minSdkVersion="8" />
 	<uses-permission android:name="com.google.android.gm.permission.READ_GMAIL"></uses-permission>
 	<uses-permission android:name="android.permission.GET_ACCOUNTS"></uses-permission>

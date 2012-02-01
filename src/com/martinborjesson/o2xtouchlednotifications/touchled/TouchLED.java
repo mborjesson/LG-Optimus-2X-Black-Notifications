@@ -30,6 +30,12 @@ abstract public class TouchLED {
 	private boolean usable = true;
 	
 	/**
+	 * Return the default brightness for the LED
+	 * @return
+	 */
+	abstract public int getDefault();
+	
+	/**
 	 * Return the maximum brightness the LED can have
 	 * @return
 	 */
@@ -81,11 +87,10 @@ abstract public class TouchLED {
 	abstract public boolean hasProperPermissions();
 	
 	/**
-	 * Return the required file for this device<br/>
-	 * Only valid for SU660/P990/P999
+	 * Return the required files for this device<br/>
 	 * @return
 	 */
-	abstract public File getFile();
+	abstract public File[] getFiles();
 	
 	/**
 	 * Returns <code>true</code> if this device is a valid device<br/>
@@ -118,6 +123,12 @@ abstract public class TouchLED {
 				touchLED = new TouchLEDP970();
 			} else if (TouchLEDP920.isAvailable()) {
 				touchLED = new TouchLEDP920();
+			} else if (TouchLEDP930.isAvailable()) {
+				touchLED = new TouchLEDP930();
+			} else if (TouchLEDLS855.isAvailable()) {
+				touchLED = new TouchLEDLS855();
+			} else if (TouchLEDP350.isAvailable()){
+				touchLED = new TouchLEDP350();
 			} else {
 				touchLED = new TouchLEDNone();
 			}

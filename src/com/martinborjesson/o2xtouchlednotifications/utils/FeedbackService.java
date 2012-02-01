@@ -16,6 +16,8 @@
 
 package com.martinborjesson.o2xtouchlednotifications.utils;
 
+import java.io.*;
+
 import android.content.*;
 import android.os.*;
 import android.preference.*;
@@ -54,8 +56,13 @@ public class FeedbackService {
 	public static void performFixes(Context context) {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
 		// perform root-fixes
-		if (prefs.getBoolean("rootPermissionFix", false) && TouchLED.getTouchLED().getFile() != null) {
-			SuperUser.doSuperUserCommand("chmod 666 " + TouchLED.getTouchLED().getFile().toString());
+		File[] files = TouchLED.getTouchLED().getFiles();
+		if (prefs.getBoolean("rootPermissionFix", false) && files != null) {
+			for (File file : files) {
+				if (!file.canRead() || !file.canWrite()) {
+					SuperUser.doSuperUserCommand("chmod 666 " + file.toString());
+				}
+			}
 		}
 		TouchLED.reset();
 	}

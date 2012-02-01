@@ -1,3 +1,10 @@
+1.2 (31 January 2012)
+
+* Added support for LG LS855. Thanks to Alex W !
+* Added support for LG P930. Thanks to Ryan D !
+* By pax0r: Added support for LG P350
+* By Savin: Fixed a bug which caused the app to not work correctly on the Gingerbread-update for P970
+
 1.1.2 (14 January 2012)
 
 * Added Russian translation. Thanks to Savin !

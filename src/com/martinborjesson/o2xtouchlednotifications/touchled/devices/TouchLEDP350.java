@@ -1,5 +1,5 @@
 /**
-   Copyright 2011 Martin Börjesson
+   Copyright 2012 Bartłomiej Biernacki
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
@@ -21,10 +21,10 @@ import java.io.*;
 import com.martinborjesson.o2xtouchlednotifications.touchled.*;
 import com.martinborjesson.o2xtouchlednotifications.utils.*;
 
-public class TouchLEDP990 extends TouchLED {
-	static public final File WLED_FILE = new File("/sys/devices/platform/star_touch_led/wled");
+public class TouchLEDP350 extends TouchLED {
+	static public final File WLED_FILE = new File("/sys/devices/platform/pmic-leds/leds/button-backlight/brightness");
 	static public final int MIN = 0;
-	static public final int MAX = 20;
+	static public final int MAX = 255;
 	static public final int DEFAULT_VALUE = MAX;
 
 	static public boolean isAvailable() {
@@ -64,11 +64,9 @@ public class TouchLEDP990 extends TouchLED {
 	    	is.close();
 	    	String valueStr = new String(buf, 0, p);
 	    	Logger.logDebug("Read Touch LED value: " + valueStr);
-	    	valueStr = valueStr.substring(valueStr.lastIndexOf(" ")+1);
-	    	valueStr = valueStr.substring(0, valueStr.indexOf("uA"));
 	    	
 	    	try {
-	        	value = Integer.valueOf(valueStr)/100;
+	        	value = Integer.valueOf(valueStr);
 	        	Logger.logDebug("Read Touch LED value (int): " + value);
 	    	} catch (NumberFormatException e) {
 	    		
@@ -99,12 +97,12 @@ public class TouchLEDP990 extends TouchLED {
 
 	@Override
 	public String getDeviceName() {
-		return "LG SU660/P990/P999";
+		return "LG P350";
 	}
 
 	@Override
 	public boolean canChangeLEDBrightness() {
-		return true;
+		return false;
 	}
 
 	@Override

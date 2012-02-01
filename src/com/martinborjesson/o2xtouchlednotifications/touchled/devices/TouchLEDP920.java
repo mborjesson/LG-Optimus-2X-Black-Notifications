@@ -36,6 +36,11 @@ public class TouchLEDP920 extends TouchLED {
 	}
 	
 	@Override
+	public int getDefault() {
+		return DEFAULT_VALUE;
+	}
+	
+	@Override
 	public int getMax() {
 		return MAX;
 	}
@@ -92,7 +97,7 @@ public class TouchLEDP920 extends TouchLED {
 
 	@Override
 	public String getDeviceName() {
-		return "P920";
+		return "LG P920";
 	}
 
 	@Override
@@ -101,8 +106,8 @@ public class TouchLEDP920 extends TouchLED {
 	}
 
 	@Override
-	public File getFile() {
-		return WLED_FILE;
+	public File[] getFiles() {
+		return new File[] { WLED_FILE };
 	}
 	
 }

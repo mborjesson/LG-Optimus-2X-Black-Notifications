@@ -28,6 +28,11 @@ import com.martinborjesson.o2xtouchlednotifications.touchled.*;
 public class TouchLEDNone extends TouchLED {
 
 	@Override
+	public int getDefault() {
+		return 0;
+	}
+	
+	@Override
 	public int getMax() {
 		return 0;
 	}
@@ -72,7 +77,7 @@ public class TouchLEDNone extends TouchLED {
 	}
 
 	@Override
-	public File getFile() {
+	public File[] getFiles() {
 		return null;
 	}
 }

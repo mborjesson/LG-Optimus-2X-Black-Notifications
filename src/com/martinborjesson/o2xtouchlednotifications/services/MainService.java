@@ -673,7 +673,7 @@ public class MainService extends Service implements SensorEventListener {
 						startAlarm(this, TouchLEDStaticPulseReceiver.START_STATIC_PULSE, TouchLEDStaticPulseReceiver.class, 0, pulseInterval, ALARM_TYPE_BROADCAST, false);
 						startAlarm(this, TouchLEDStaticPulseReceiver.STOP_STATIC_PULSE, TouchLEDStaticPulseReceiver.class, stopStaticPulseDelay, pulseInterval, ALARM_TYPE_BROADCAST, false);
 					} else { // constant light
-						int maxLEDStrength = preferences.getInt(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_BRIGHTNESS, Constants.DEFAULT_PULSE_MAX_LED_STRENGTH);
+						int maxLEDStrength = preferences.getInt(pulseKey + "." + Constants.PREFERENCE_KEY_TOUCH_LED_BRIGHTNESS, TouchLED.getTouchLED().getDefault());
 						touchLED.set(TouchLED.SEARCH, maxLEDStrength);
 					}
     			}

@@ -126,7 +126,7 @@ public class TouchLEDService extends WakefulIntentService {
     		fadeInTime = MainService.toInt(prefs.getString(id + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FADE_IN_TIME, String.valueOf(Constants.DEFAULT_PULSE_FADE_IN)), Constants.DEFAULT_PULSE_FADE_IN);
     		fadeOutTime = MainService.toInt(prefs.getString(id + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FADE_OUT_TIME, String.valueOf(Constants.DEFAULT_PULSE_FADE_OUT)), Constants.DEFAULT_PULSE_FADE_OUT);
     		activeTime = MainService.toInt(prefs.getString(id + "." + Constants.PREFERENCE_KEY_TOUCH_LED_FULLY_LIT_TIME, String.valueOf(Constants.DEFAULT_PULSE_ACTIVE)), Constants.DEFAULT_PULSE_ACTIVE);
-    		maxLEDStrength = prefs.getInt(id + "." + Constants.PREFERENCE_KEY_TOUCH_LED_BRIGHTNESS, Constants.DEFAULT_PULSE_MAX_LED_STRENGTH);
+    		maxLEDStrength = prefs.getInt(id + "." + Constants.PREFERENCE_KEY_TOUCH_LED_BRIGHTNESS, TouchLED.getTouchLED().getDefault());
     		Logger.logDebug("Pulse fade in time: " + fadeInTime);
     		Logger.logDebug("Pulse active time: " + activeTime);
     		Logger.logDebug("Pulse fade out time: " + fadeOutTime);

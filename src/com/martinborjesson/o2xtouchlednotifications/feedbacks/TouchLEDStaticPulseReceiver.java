@@ -17,11 +17,14 @@
 package com.martinborjesson.o2xtouchlednotifications.feedbacks;
 
 import android.content.*;
+import android.os.*;
+import android.os.PowerManager.WakeLock;
 import android.preference.*;
 
 import com.martinborjesson.o2xtouchlednotifications.*;
 import com.martinborjesson.o2xtouchlednotifications.services.*;
 import com.martinborjesson.o2xtouchlednotifications.touchled.*;
+import com.martinborjesson.o2xtouchlednotifications.touchled.devices.*;
 import com.martinborjesson.o2xtouchlednotifications.utils.*;
 
 public class TouchLEDStaticPulseReceiver extends BroadcastReceiver {
@@ -49,7 +52,7 @@ public class TouchLEDStaticPulseReceiver extends BroadcastReceiver {
 		if (disabled) {
 			return;
 		}
-		// this is fast enough so we can do everything without waking the device
+		
     	if (prefs == null) {
     		Logger.logDebug("Loading properties...");
     		prefs = PreferenceManager.getDefaultSharedPreferences(context);
@@ -58,7 +61,7 @@ public class TouchLEDStaticPulseReceiver extends BroadcastReceiver {
     		props.load();
     		String id = props.get(MainService.PROPERTY_ACTIVE_NOTIFICATION, Constants.PREFERENCE_KEY_DEFAULT_PULSE);
 
-    		maxLEDStrength = prefs.getInt(id + "." + Constants.PREFERENCE_KEY_TOUCH_LED_BRIGHTNESS, Constants.DEFAULT_PULSE_MAX_LED_STRENGTH);
+    		maxLEDStrength = prefs.getInt(id + "." + Constants.PREFERENCE_KEY_TOUCH_LED_BRIGHTNESS, TouchLED.getTouchLED().getDefault());
     		
     		Logger.logDebug("Pulse max LED strength: " + maxLEDStrength);
     	}
@@ -66,6 +69,14 @@ public class TouchLEDStaticPulseReceiver extends BroadcastReceiver {
     		touchLED = TouchLED.getTouchLED();
     	}
 		if (intent != null && intent.getAction() != null) {
+			// it should be fast enough to do stuff here without waking up the device
+			// but if it isn't we can use a wake lock
+			WakeLock wl = null;
+			if (touchLED instanceof TouchLEDP930) {
+				PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+				wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "TouchLEDStaticPulseReceiver WL");
+				wl.acquire();
+			}
 			
 			if (intent.getAction().equals(START_STATIC_PULSE)) {
 				Logger.logDebug("Start pulse");
@@ -73,6 +84,10 @@ public class TouchLEDStaticPulseReceiver extends BroadcastReceiver {
 			} else if (intent.getAction().equals(STOP_STATIC_PULSE)) {
 				Logger.logDebug("Stop pulse");
 				touchLED.set(TouchLED.SEARCH, touchLED.getMin());
+			}
+			
+			if (wl != null) {
+				wl.release();
 			}
 		}
 	}

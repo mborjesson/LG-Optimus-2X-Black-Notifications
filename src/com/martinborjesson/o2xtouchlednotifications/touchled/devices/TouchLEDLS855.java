@@ -21,25 +21,35 @@ import java.io.*;
 import com.martinborjesson.o2xtouchlednotifications.touchled.*;
 import com.martinborjesson.o2xtouchlednotifications.utils.*;
 
-public class TouchLEDP990 extends TouchLED {
-	static public final File WLED_FILE = new File("/sys/devices/platform/star_touch_led/wled");
+public class TouchLEDLS855 extends TouchLED {
+	static public final File WLED_PATH = new File("/sys/devices/platform/i2c_omap.2/i2c-2/2-001a/");
+	static public final File BUTTON1 = new File(WLED_PATH.toString() + "/" + "0x03"); // search
+	static public final File BUTTON2 = new File(WLED_PATH.toString() + "/" + "0x06"); // menu
+	static public final File BUTTON3 = new File(WLED_PATH.toString() + "/" + "0x10"); // back
+	static public final File BUTTON4 = new File(WLED_PATH.toString() + "/" + "0x0D"); // home
+	static public final File ONOFF = new File(WLED_PATH.toString() + "/" + "led_onoff");
 	static public final int MIN = 0;
-	static public final int MAX = 20;
+	static public final int MAX = 50;
 	static public final int DEFAULT_VALUE = MAX;
 
 	static public boolean isAvailable() {
-		return WLED_FILE.exists() && WLED_FILE.isFile();
+		return WLED_PATH.exists() && WLED_PATH.isDirectory();
 	}
 	
 	public boolean hasProperPermissions() {
-		return WLED_FILE.canRead() && WLED_FILE.canWrite();
+		return 
+				BUTTON1.canRead() && BUTTON1.canWrite() &&
+				BUTTON2.canRead() && BUTTON2.canWrite() &&
+				BUTTON3.canRead() && BUTTON3.canWrite() &&
+				BUTTON4.canRead() && BUTTON4.canWrite() &&
+				ONOFF.canRead() && ONOFF.canWrite();
 	}
-	
+
 	@Override
 	public int getDefault() {
 		return DEFAULT_VALUE;
 	}
-	
+
 	@Override
 	public int getMax() {
 		return MAX;
@@ -54,7 +64,7 @@ public class TouchLEDP990 extends TouchLED {
 	public int getCurrent() {
     	int value = DEFAULT_VALUE;
 		try {
-	    	InputStream is = new FileInputStream(WLED_FILE);
+	    	InputStream is = new FileInputStream(BUTTON1);
 	    	int read = -1;
 	    	byte[] buf = new byte[128];
 	    	int p = 0;
@@ -64,11 +74,9 @@ public class TouchLEDP990 extends TouchLED {
 	    	is.close();
 	    	String valueStr = new String(buf, 0, p);
 	    	Logger.logDebug("Read Touch LED value: " + valueStr);
-	    	valueStr = valueStr.substring(valueStr.lastIndexOf(" ")+1);
-	    	valueStr = valueStr.substring(0, valueStr.indexOf("uA"));
 	    	
 	    	try {
-	        	value = Integer.valueOf(valueStr)/100;
+	        	value = Integer.valueOf(valueStr);
 	        	Logger.logDebug("Read Touch LED value (int): " + value);
 	    	} catch (NumberFormatException e) {
 	    		
@@ -80,36 +88,56 @@ public class TouchLEDP990 extends TouchLED {
 
 	@Override
 	public void set(int button, int value) {
-		// no support for separate buttons
+		if (button == SEARCH) {
+			set(BUTTON1, value);
+		} else if (button == MENU) {
+			set(BUTTON2, value);
+		} else if (button == BACK) {
+			set(BUTTON3, value);
+		} else if (button == HOME) {
+			set(BUTTON4, value);
+		}
+	}
+
+	@Override
+	public void setAll(int value) {
+		set(BUTTON1, value);
+		set(BUTTON2, value);
+		set(BUTTON3, value);
+		set(BUTTON4, value);
+	}
+
+	private void set(File file, int value) {
 		try {
 			String valueStr = String.valueOf(Math.min(MAX, Math.max(value, MIN)));
 			
-			OutputStream os = new FileOutputStream(WLED_FILE);
+			OutputStream os = new FileOutputStream(file);
 			os.write(valueStr.getBytes());
 			os.close();
 		} catch (IOException e) {
 			
 		}
 	}
-
-	@Override
-	public void setAll(int value) {
-		set(0, value);
+	
+	public void setOnOffLED(boolean on) {
+		set(ONOFF, on ? 1 : 0);
+		if (on) {
+			setAll(0);
+		}
 	}
 
 	@Override
 	public String getDeviceName() {
-		return "LG SU660/P990/P999";
+		return "LG LS855";
 	}
 
 	@Override
 	public boolean canChangeLEDBrightness() {
-		return true;
+		return false;
 	}
 
 	@Override
 	public File[] getFiles() {
-		return new File[] { WLED_FILE };
+		return new File[] { BUTTON1, BUTTON2, BUTTON3, BUTTON4, ONOFF };
 	}
-	
 }
