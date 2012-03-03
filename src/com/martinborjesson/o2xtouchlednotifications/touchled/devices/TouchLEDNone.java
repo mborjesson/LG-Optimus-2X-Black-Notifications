@@ -73,7 +73,7 @@ public class TouchLEDNone extends TouchLED {
 
 	@Override
 	public boolean hasProperPermissions() {
-		return false;
+		return true;
 	}
 
 	@Override
