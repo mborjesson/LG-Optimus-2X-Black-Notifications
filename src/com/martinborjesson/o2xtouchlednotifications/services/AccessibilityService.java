@@ -183,8 +183,6 @@ public class AccessibilityService extends android.accessibilityservice.Accessibi
 		} else {
 			Logger.logDebug(event.getPackageName() + " was excluded.");
 		}
-		event.setChecked(true);
-		event.recycle();
 	}
 
 	@Override
