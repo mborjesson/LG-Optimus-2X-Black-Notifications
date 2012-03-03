@@ -243,7 +243,7 @@ public class MainPreferences extends PreferenceActivity implements OnSharedPrefe
         }
 
         boolean doInit = true;
-    	if (!touchLED.hasProperPermissions()) {
+    	if (touchLED.isValid() && !touchLED.hasProperPermissions()) {
 			doInit = false;
     		if (SuperUser.hasSuperUser()) {
     			// rooted
@@ -290,10 +290,24 @@ public class MainPreferences extends PreferenceActivity implements OnSharedPrefe
     			enableAccessibilityDialog.show();
     		}
         }
-        
+    	
         if (doInit) {
         	initialize();
         }
+	}
+	
+	private void showUnsupportedDeviceDialog() {
+    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    	builder.setTitle(R.string.dialog_title_unable_to_start)
+    			.setMessage(R.string.dialog_message_unable_to_start)
+    			.setCancelable(false)
+    			.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+    				public void onClick(DialogInterface dialog, int id) {
+    					
+    				}
+    			});
+    	AlertDialog alert = builder.create();
+    	alert.show();
 	}
 	
 	/**
@@ -316,17 +330,7 @@ public class MainPreferences extends PreferenceActivity implements OnSharedPrefe
         }
 
         if (!touchLED.isValid()) {
-        	AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        	builder.setTitle(R.string.dialog_title_unable_to_start)
-        			.setMessage(R.string.dialog_message_unable_to_start)
-        			.setCancelable(false)
-        			.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-        				public void onClick(DialogInterface dialog, int id) {
-        					
-        				}
-        			});
-        	AlertDialog alert = builder.create();
-        	alert.show();
+        	showUnsupportedDeviceDialog();
         }
 
     	
@@ -598,7 +602,7 @@ public class MainPreferences extends PreferenceActivity implements OnSharedPrefe
 	    		seekBar.setTitle(R.string.preference_title_feedback_delay);
 	    		seekBar.setDialogTitle(seekBar.getTitle());
 	    		seekBar.setDialogMessage(R.string.dialog_message_feedback_delay);
-	    		seekBar.setMax(30);
+	    		seekBar.setMax(Constants.DEFAULT_MAX_PULSE_DELAY);
 	    		seekBar.setDefaultValue(Constants.DEFAULT_PULSE_DELAY);
 	
 	    		PreferenceSummaryChanger changer = new PreferenceSummaryChanger(seekBar, getString(R.string.dialog_description_feedback_delay), new PreferenceSummaryChanger.OnSummaryChangeListener() {
@@ -769,9 +773,9 @@ public class MainPreferences extends PreferenceActivity implements OnSharedPrefe
 
 		createCustomizeNotifications((PreferenceScreen)findPreference("preferenceNotificationsCustomizeNotifications"));
         
-    	if (touchLED instanceof TouchLEDP970) {
-//    		findPreference("TouchLEDPrefs").setEnabled(false);
-//    		findPreference("ChargingPrefs").setEnabled(false);
+    	if (!touchLED.isValid()) {
+    		findPreference("TouchLEDPrefs").setEnabled(false);
+    		findPreference("ChargingPrefs").setEnabled(false);
     	}
     }
 	
