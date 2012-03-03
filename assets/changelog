@@ -1,3 +1,11 @@
+1.2.1 (3 March 2012)
+
+* There is unfortunately no updates for Optimus Black. Please contact me if a solution for the issues with the Gingerbread-update is found
+* The "unsupported device"-dialog is now displayed properly
+* Fixed crash-issues related to accessibility
+* Better support for ICS
+* Increased the maximum value for the feedback-delay to 5 minutes
+
 1.2 (31 January 2012)
 
 * Added support for LG LS855. Thanks to Alex W !
