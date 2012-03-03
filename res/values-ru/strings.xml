@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">LG 2X/Black/3D Уведомления</string>
+    <string name="app_name">LG Уведомления</string>
     
     <string name="translator_language">Russian</string> <!-- translated language -->
     <string name="translator_name">Savin</string> <!-- your name, leave empty if you do not want to be credited -->
