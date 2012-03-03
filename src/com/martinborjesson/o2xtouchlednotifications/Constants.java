@@ -69,6 +69,7 @@ public class Constants {
 	
 	public static final int DEFAULT_LED_BRIGHTNESS_WHILE_CHARGING = 3;
 	public static final int DEFAULT_PULSE_DELAY = 4;
+	public static final int DEFAULT_MAX_PULSE_DELAY = 5*60;
 	
 	public static final float DEFAULT_VIBRATE_SLOWER_OVER_TIME = 1.1f;	
 
