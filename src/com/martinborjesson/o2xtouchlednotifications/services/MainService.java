@@ -1184,6 +1184,7 @@ public class MainService extends Service implements SensorEventListener {
 				startFeedback(touchLEDState != STATE_TOUCH_LED_PULSE ? TOUCH_LED_START_PULSE : 0, activeNotification);
 			} else {
 				Logger.logDebug("Delaying until screen turns off");
+				stopOnScreenOn = false;
 			}
 		}
 	}
