@@ -96,7 +96,7 @@
 
     <string name="preference_title_feedback_test">Test</string>
     <string name="preference_summary_feedback_test">Test the feedback</string>
-    <string name="dialog_title_feedback_test">Testing...</string>
+    <string name="dialog_title_feedback_test">Testing&#8230;</string>
     <string name="preference_title_feedback_touch_led">Touch LED</string>
     <string name="preference_title_feedback_touch_led_mode">Mode</string>
     <string name="preference_title_feedback_touch_led_fade_in_time">Fade in time</string>
@@ -179,7 +179,7 @@
     
     <string name="dialog_message_enable_accessibility">The app must be enabled in Accessibility settings, do you want to do that now ?</string>
 
-    <string name="dialog_title_loading_activities">Loading activities...</string>
+    <string name="dialog_title_loading_activities">Loading activities&#8230;</string>
     <string name="dialog_title_select_activities">Select activities</string>
     <string name="toast_added_activity">Added</string>
     

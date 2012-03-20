@@ -111,7 +111,7 @@
     <string name="preference_title_feedback_test">Проверка</string>
 
     <string name="preference_summary_feedback_test">Тест уведомлений</string>
-    <string name="dialog_title_feedback_test">Выполняется...</string>
+    <string name="dialog_title_feedback_test">Выполняется&#8230;</string>
     <string name="preference_title_feedback_touch_led">LED индикатор</string>
     <string name="preference_title_feedback_touch_led_mode">Режим</string>
     <string name="preference_title_feedback_touch_led_fade_in_time">Длительность появления</string>
@@ -205,7 +205,7 @@
     
     <string name="dialog_message_enable_accessibility">Приложение должно быть разрешено в настройках специальных возможностей, хотите сделать это сейчас ?</string>
 
-    <string name="dialog_title_loading_activities">Загрузка приложений...</string>
+    <string name="dialog_title_loading_activities">Загрузка приложений&#8230;</string>
     <string name="dialog_title_select_activities">Выбор приложений</string>
     <string name="toast_added_activity">Добавлено</string>
     
