@@ -125,6 +125,8 @@ abstract public class TouchLED {
 				touchLED = new TouchLEDP920();
 			} else if (TouchLEDP930.isAvailable()) {
 				touchLED = new TouchLEDP930();
+			} else if (TouchLEDP930jb.isAvailable()) {  // JellyBean support for P930
+				touchLED = new TouchLEDP930jb();				
 			} else if (TouchLEDP940.isAvailable()) {
 				touchLED = new TouchLEDP940();
 			} else if (TouchLEDLS855.isAvailable()) {
