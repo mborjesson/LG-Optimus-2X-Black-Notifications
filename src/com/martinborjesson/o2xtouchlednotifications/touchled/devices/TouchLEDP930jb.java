@@ -21,7 +21,7 @@ import java.io.*;
 import com.martinborjesson.o2xtouchlednotifications.touchled.*;
 import com.martinborjesson.o2xtouchlednotifications.utils.*;
 
-public class TouchLEDP930 extends TouchLED {
+public class TouchLEDP930jb extends TouchLED {
 	static public final File WLED_FILE = new File("/sys/devices/platform/msm_ssbi.0/pm8058-core/pm8058-led/leds/button-backlight/brightness");
 	static public final int MIN = 0;
 	static public final int MAX = 255;
