@@ -32,7 +32,20 @@ public class BootReceiver extends BroadcastReceiver {
 
 	public void onReceive(Context context, Intent intent) {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+		Logger.setEnabled(prefs.getBoolean("checkBoxLog", Constants.DEFAULT_LOGGING));
+		
+		if (Logger.isEnabled()) {
+			if (prefs.getBoolean("checkBoxLogFile", Constants.DEFAULT_LOGGING)) {
+				Logger.startLogToFile();
+			}
+		} else {
+			Logger.stopLogToFile();
+		}
+
+		Logger.logDebug("Starting service from boot...");
 		FeedbackService.performFixes(context); // perform special fixes if needed
+		
+		Logger.logDebug("Has proper permissions: " + TouchLED.getTouchLED().hasProperPermissions());
 		if (TouchLED.getTouchLED().hasProperPermissions()) {
 			if (TouchLED.getTouchLED().canChangeLEDBrightness() && prefs.getBoolean("checkBoxTouchLEDStrengthSetOnBootPref", Constants.DEFAULT_SET_TOUCH_LED_STRENGTH_ON_BOOT)) {
 	    		int value = prefs.getInt("seekBarTouchLEDStrengthPref", Constants.DEFAULT_TOUCH_LED_STRENGTH);
@@ -40,7 +53,9 @@ public class BootReceiver extends BroadcastReceiver {
 				TouchLED.getTouchLED().setAll(value);
 			}
 		}
-		if (prefs.getBoolean("checkboxAutostartService", Constants.DEFAULT_AUTOSTART_SERVICE)) {
+		boolean autostart = prefs.getBoolean("checkboxAutostartService", Constants.DEFAULT_AUTOSTART_SERVICE);
+		Logger.logDebug("Autostart enabled: " + autostart);
+		if (autostart) {
 			FeedbackService.startService(context, null);
 		}
 	}
