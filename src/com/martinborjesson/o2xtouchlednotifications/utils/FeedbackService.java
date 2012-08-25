@@ -46,6 +46,8 @@ public class FeedbackService {
 	    		in.setAction(MainService.ACTION_SCREEN_OFF);
 	    	} 
 			context.startService(in);
+		} else {
+			Logger.logDebug("Service is disabled");
 		}
 	}
 	
@@ -60,6 +62,7 @@ public class FeedbackService {
 		if (prefs.getBoolean("rootPermissionFix", false) && files != null) {
 			for (File file : files) {
 				if (!file.canRead() || !file.canWrite()) {
+					Logger.logDebug("Performing root fix...");
 					SuperUser.doSuperUserCommand("chmod 666 " + file.toString());
 				}
 			}
