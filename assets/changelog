@@ -1,3 +1,8 @@
+1.2.4 (29 December 2012)
+
+* Added ICS-support for LG P990. Thanks to ergosum !
+* If you have issues with rooting on P990 ICS ergosum told me that SuperUser does not behave correctly on ICS, and mein (from XDA-forums) found out that changing to SuperSU fixes this.
+
 1.2.3 (25 August 2012)
 
 * Added support for LG P940. Thanks to Micha L !
