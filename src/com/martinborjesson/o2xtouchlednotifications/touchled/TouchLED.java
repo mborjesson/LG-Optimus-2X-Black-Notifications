@@ -20,99 +20,113 @@ import java.io.*;
 
 import com.martinborjesson.o2xtouchlednotifications.touchled.devices.*;
 
-
 abstract public class TouchLED {
 	public final static int SEARCH = 0;
 	public final static int HOME = 1;
 	public final static int BACK = 2;
 	public final static int MENU = 3;
-	
+
 	private boolean usable = true;
-	
+
 	/**
 	 * Return the default brightness for the LED
+	 * 
 	 * @return
 	 */
 	abstract public int getDefault();
-	
+
 	/**
 	 * Return the maximum brightness the LED can have
+	 * 
 	 * @return
 	 */
 	abstract public int getMax();
-	
+
 	/**
 	 * Return the minimum brightness the LED can have
+	 * 
 	 * @return
 	 */
 	abstract public int getMin();
-	
+
 	/**
 	 * Return the current brightness of the LED
+	 * 
 	 * @return
 	 */
 	abstract public int getCurrent();
-	
+
 	/**
 	 * Set the brightness of the specified LED button<br/>
 	 * Only P970 cares about this
+	 * 
 	 * @param button
 	 * @param value
 	 */
 	abstract public void set(int button, int value);
-	
+
 	/**
 	 * Sets the brightness of all LED buttons
+	 * 
 	 * @param value
 	 */
 	abstract public void setAll(int value);
-	
+
 	/**
-	 * Returns <code>true</code> if the LED brightness can be changed permanently<br/>
+	 * Returns <code>true</code> if the LED brightness can be changed
+	 * permanently<br/>
 	 * Currently only SU660/P990/P999 supports this
+	 * 
 	 * @return
 	 */
 	abstract public boolean canChangeLEDBrightness();
-	
+
 	/**
 	 * Name of the device
+	 * 
 	 * @return
 	 */
 	abstract public String getDeviceName();
-	
+
 	/**
-	 * Returns <code>true</code> if the required file has proper permissions 
+	 * Returns <code>true</code> if the required file has proper permissions
+	 * 
 	 * @return
 	 */
 	abstract public boolean hasProperPermissions();
-	
+
 	/**
 	 * Return the required files for this device<br/>
+	 * 
 	 * @return
 	 */
 	abstract public File[] getFiles();
-	
+
 	/**
 	 * Returns <code>true</code> if this device is a valid device<br/>
 	 * More convenient than <code>obj instanceof TouchLEDNone</code>
+	 * 
 	 * @return
 	 */
 	public boolean isValid() {
 		return true;
 	}
-	
+
 	/**
 	 * Returns <code>true</code> if the LEDs on this device is usable<br/>
+	 * 
 	 * @return
 	 */
 	public boolean isUsable() {
 		return usable;
 	}
-	
+
 	static private TouchLED touchLED = null;
-	
+
 	/**
-	 * Return a <code>TouchLED</code> object for this device. The returned object will never be <code>null</code>.
+	 * Return a <code>TouchLED</code> object for this device. The returned
+	 * object will never be <code>null</code>.
+	 * 
 	 * @return
 	 */
 	static public TouchLED getTouchLED() {
@@ -127,14 +141,16 @@ abstract public class TouchLED {
 				touchLED = new TouchLEDP920();
 			} else if (TouchLEDP930.isAvailable()) {
 				touchLED = new TouchLEDP930();
-			} else if (TouchLEDP930jb.isAvailable()) {  // JellyBean support for P930
-				touchLED = new TouchLEDP930jb();				
+			} else if (TouchLEDP930jb.isAvailable()) { // JellyBean support for P930
+				touchLED = new TouchLEDP930jb();
 			} else if (TouchLEDP940.isAvailable()) {
 				touchLED = new TouchLEDP940();
 			} else if (TouchLEDLS855.isAvailable()) {
 				touchLED = new TouchLEDLS855();
-			} else if (TouchLEDP350.isAvailable()){
+			} else if (TouchLEDP350.isAvailable()) {
 				touchLED = new TouchLEDP350();
+			} else if (TouchLEDF160.isAvailable()) {
+				touchLED = new TouchLEDF160(); // JellyBean support for F160
 			} else {
 				touchLED = new TouchLEDNone();
 			}
@@ -142,7 +158,7 @@ abstract public class TouchLED {
 		touchLED.usable = touchLED.isValid() && touchLED.hasProperPermissions();
 		return touchLED;
 	}
-	
+
 	static public void reset() {
 		touchLED = null;
 	}
