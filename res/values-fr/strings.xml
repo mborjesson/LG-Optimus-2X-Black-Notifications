@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LG Notifications</string>
+    
+    <string name="translator_language">Français</string> <!-- translated language -->
+    <string name="translator_name">Thomas Pierard</string> <!-- your name, leave empty if you do not want to be credited -->
+    
+    <string name="preference_title_main_options">Options principales</string>
+    <string name="preference_title_enable">Actif</string>
+    <string name="preference_title_notifications">Notifications</string>
+    <string name="preference_title_gmail">Gmail</string>
+    <string name="preference_title_smsmms">SMS/MMS</string>
+    <string name="preference_title_missed_calls">Appels manqués</string>
+    <string name="preference_title_monitored_activities">Applications surveillées</string>
+    <string name="preference_title_select_monitored_activities">Sélectionner les applications surveillées</string>
+    <string name="preference_summary_select_monitored_activities">Applications dont les notifications seront surveillées</string>
+    <string name="preference_title_clear_monitored_activities">Ne plus surveiller aucune application</string>
+    <string name="preference_summary_clear_monitored_activities">Vider la liste des applications surveillées</string>
+    <string name="preference_title_notifications_with_lights">Notifications lumineuses</string>
+    <string name="preference_summaryon_notifications_with_lights">Activer les notifications lumineuses pour toutes les applications qui veulent allumer la LED</string>
+    <string name="preference_summaryoff_notifications_with_lights">Désactiver les notifications lumineuses pour toutes les applications qui veulent allumer la LED</string>
+    <string name="preference_title_excluded_activities">Applications exclues</string>
+    <string name="preference_summary_excluded_activities">Applications a exclure des notifications</string>
+    <string name="preference_title_clear_excluded_activities">Vider la liste des applications exclues</string>
+    <string name="preference_summary_clear_excluded_activities">Autoriser toutes les applications a utiliser la LED</string>
+    
+    <string name="preference_title_feedback">Alertes</string>
+    <string name="preference_title_customize">Personnalisation</string>
+    <string name="preference_title_default_feedback_options">Options par défaut des alertes</string>
+    <string name="preference_summary_default_feedback_options">Modifier les options des alertes par défaut</string>
+    <string name="preference_title_feedback_notifications">Options par défaut des applications</string>
+    <string name="preference_summary_feedback_notifications">Modifier les options par application</string>
+    <string name="preference_title_feedback_delay">Délais</string>
+    <string name="preference_summary_feedback_delay">Modifie le délais avant d\'afficher une notification</string>
+    <string name="dialog_message_feedback_delay">en secondes</string>
+    <string name="dialog_description_feedback_delay">Attendre %s avant d\'afficher la notification</string>
+    <string name="dialog_description_feedback_delay_disabled">le Délais de notification est désactivé</string>
+    <string name="preference_title_feedback_timeout">Expiration</string>
+    <string name="preference_summary_feedback_timeout">%s heures</string>
+    
+    <string name="preference_title_feedback_notification">Icône</string>
+    <string name="preference_title_feedback_display_notification">Afficher une icône</string>
+    <string name="preference_summaryon_feedback_display_notification">Affiche une icône dans la barre de notification quand les alertes sont activées. L\'icône peut être désactivée</string>
+    <string name="preference_summaryoff_feedback_display_notification">Pas d\'icône dans la barre de notification</string>
+    <string name="preference_title_feedback_always_display_notification">Toujours afficher</string>
+    <string name="preference_summaryon_feedback_always_display_notification">Toujours afficher une icône dans la barre de notification</string>
+    <string name="preference_summaryoff_feedback_always_display_notification">Afficher une icône dans la barre de notification uniquement quand une alerte est affichée</string>
+    <string name="preference_title_feedback_display_notification_activity">Afficher l\'application</string>
+    <string name="preference_summaryon_feedback_display_notification_activity">Afficher l\'application ayant déclenché la dernière alerte</string>
+    <string name="preference_summaryoff_feedback_display_notification_activity">Ne pas afficher l\'application ayant déclenché l\'alerte</string>
+    
+    <string name="preference_title_miscellaneous_options">Autres options</string>
+    <string name="preference_title_miscellaneous">Divers</string>
+    <string name="preference_title_miscellaneous_accelerometer">Accéléromètre</string>
+    <string name="preference_summary_miscellaneous_accelerometer">L\'accéléromètre est utilisé pour détecter l\'activé de l\'utilisateur</string>
+    <string name="preference_title_miscellaneous_accelerometer_enable_in_lockscreen">Activer quand l\'écran est verrouillé</string>
+    <string name="preference_summaryon_miscellaneous_accelerometer_enable_in_lockscreen">Activer l\'accéléromètre quand l\'écran est verrouillé</string>
+    <string name="preference_summaryoff_miscellaneous_accelerometer_enable_in_lockscreen">Désactiver l\'accéléromètre quand l\'écran est verrouillé</string>
+    <string name="preference_title_miscellaneous_accelerometer_tolerance">Tolérance de l\'accéléromètre</string>
+    <string name="preference_summary_miscellaneous_accelerometer_tolerance">Valeur actuelle: %s</string>
+    <string name="preference_title_miscellaneous_sleep">Veille</string>
+    <string name="preference_summary_miscellaneous_sleep">Désactivation des alertes pendant la nuit</string>
+    <string name="preference_title_miscellaneous_sleep_enable">Activé la veille</string>
+    <string name="preference_title_miscellaneous_sleep_off_time">Heure d\'arrêt</string>
+    <string name="preference_title_miscellaneous_sleep_on_time">Heure de départ</string>
+    <string name="preference_title_miscellaneous_touch_led">Options des boutons LED</string>
+    <string name="preference_summary_miscellaneous_touch_led">Autres options des boutons LED</string>
+    <string name="preference_title_miscellaneous_touch_led_not_available">Non disponibles</string>
+    <string name="preference_summary_miscellaneous_touch_led_not_available">Cette option n\'est pas disponible pour votre appareil</string>
+    <string name="preference_title_miscellaneous_touch_led_set_on_boot">Activer au démarrage</string>
+    <string name="preference_summaryon_miscellaneous_touch_led_set_on_boot">Modifier la brillance des boutons au démarrage de l\'appareil</string>
+    <string name="preference_summaryoff_miscellaneous_touch_led_set_on_boot">Ne pas modifier la brillance des boutons au démarrage de l\'appareil</string>
+    <string name="preference_title_miscellaneous_touch_led_brightness">Brillance des boutons LED</string>
+    <string name="preference_summary_miscellaneous_touch_led_brightness">Définit la brillance des boutons LED en usage normal</string>
+    <string name="preference_title_miscellaneous_charging">En charge</string>
+    <string name="preference_summary_miscellaneous_charging">Options pendant la charge de l\'appareil</string>
+    <string name="preference_title_miscellaneous_charging_disable_feedback">Désactiver les alertes pendant la charge</string>
+    <string name="preference_summaryon_miscellaneous_charging_disable_feedback">Les alertes sont désactivées pendant la charge</string>
+    <string name="preference_summaryoff_miscellaneous_charging_disable_feedback">Les alertes sont activées pendant la charge</string>
+    <string name="preference_title_miscellaneous_charging_charge_indicator">Indicateur de charge</string>
+    <string name="preference_summaryon_miscellaneous_charging_charge_indicator">Les boutons LED sont allumés quand le téléphone est en charge, il s\'éteignent quand le téléphone est chargé</string>
+    <string name="preference_summaryoff_miscellaneous_charging_charge_indicator">Indicateur de charge désactivé</string>
+    <string name="preference_title_miscellaneous_charging_touch_led_brightness">Luminosité des boutons pendant la charge</string>
+    <string name="preference_summary_miscellaneous_charging_touch_led_brightness">Définir la brillance des boutons LED pendant la charge</string>
+    <string name="preference_title_miscellaneous_battery_saving">Options d\'économie d’énergie</string>
+    <string name="preference_summary_miscellaneous_battery_saving">Options d\'économie d’énergie</string>
+    <string name="preference_title_miscellaneous_battery_saving_disable_feedback">Désactiver les alertes quand la batterie est faible</string>
+    <string name="preference_summaryon_miscellaneous_battery_saving_disable_feedback">Les alertes seront désactivées quand la batterie est faible</string>
+    <string name="preference_summaryoff_miscellaneous_battery_saving_disable_feedback">Les alertes seront activées même quand la batterie est faible</string>
+    <string name="preference_title_miscellaneous_battery_saving_disable_feedback_value">Seuil de batterie faible</string>
+    <string name="preference_summary_miscellaneous_battery_saving_disable_feedback_value">%s %</string>
+    <string name="preference_title_miscellaneous_autostart">Démarrage automatique</string>
+    <string name="preference_title_miscellaneous_autostart_service">Démarrage automatique du service</string>
+    <string name="preference_summaryon_miscellaneous_autostart_service">Le service démarrera en même temps que l\'appareil</string>
+    <string name="preference_summaryoff_miscellaneous_autostart_service">Le service devra être lancé manuellement au démarrage de l\'appareil</string>
+
+    <string name="preference_title_feedback_test">Test</string>
+    <string name="preference_summary_feedback_test">Test des alarmes</string>
+    <string name="dialog_title_feedback_test">Test en cours&#8230;</string>
+    <string name="preference_title_feedback_touch_led">Boutons LED</string>
+    <string name="preference_title_feedback_touch_led_mode">Mode</string>
+    <string name="preference_title_feedback_touch_led_fade_in_time">Durée du fade in</string>
+    <string name="dialog_title_feedback_touch_led_fade_in_time">Durée du dégradé pour allumer la LED en millisecondes</string>
+    <string name="preference_title_feedback_touch_led_fully_lit_time">Durée d\'activation</string>
+    <string name="dialog_title_feedback_touch_led_fully_lit_time">Temps pendant lequel le bouton restera complètement allumé en millisecondes</string>
+    <string name="preference_title_feedback_touch_led_fade_out_time">durée du fade out</string>
+    <string name="dialog_title_feedback_touch_led_fade_out_time">Durée du dégradé pour éteindre la LED en millisecondes</string>
+    <string name="preference_title_feedback_touch_led_inactive_time">Durée d\'inactivité</string>
+    <string name="dialog_title_feedback_touch_led_inactive_time">Temps pendant lequel le bouton sera éteint entre deux pulsations</string>
+    <string name="preference_summary_feedback_touch_led_time">%s ms</string>
+    <string name="preference_title_feedback_touch_led_brightness">Brillance des boutons LED</string>
+    <string name="preference_summary_feedback_touch_led_brightness">%s %</string>
+    <string name="preference_title_feedback_vibrator">Vibreur</string>
+    <string name="preference_title_feedback_vibrator_mode">Mode</string>
+    <string name="preference_title_feedback_vibrator_duration">Durée</string>
+    <string name="dialog_title_feedback_vibrator_duration">En millisecondes</string>
+    <string name="preference_summary_feedback_vibrator_duration">%s ms</string>
+    <string name="preference_title_feedback_vibrator_delay">Délais</string>
+    <string name="dialog_title_feedback_vibrator_delay">En millisecondes</string>
+    <string name="preference_summary_feedback_vibrator_delay">Attendre un minimum de %s ms entre les vibrations</string>
+    
+    <string name="preference_title_feedback_notification_ringtone">Sonnerie d\'alertes</string>
+    <string name="preference_title_feedback_notification_ringtone_select">Sélectionner la sonnerie d\'alerte</string>
+    <string name="preference_summary_feedback_notification_ringtone_select">Sonnerie actuelle:</string>
+    <string name="preference_title_feedback_notification_ringtone_mode">Mode</string>
+    <string name="preference_title_feedback_notification_ringtone_duration">Durée</string>
+    <string name="dialog_title_feedback_notification_ringtone_duration">En millisecondes</string>
+    <string name="preference_summary_feedback_notification_ringtone_duration">%s ms</string>
+    <string name="preference_title_feedback_notification_ringtone_delay">Délais</string>
+    <string name="dialog_title_feedback_notification_ringtone_delay">En millisecondes</string>
+    <string name="preference_summary_feedback_notification_ringtone_delay">Attendre un minimum de %s ms entre les alertes sonores</string>
+    
+    <string name="preference_title_feedback_other">Autre</string>
+    <string name="preference_title_feedback_other_priority">Priorité</string>
+    <string name="dialog_title_feedback_other_priority">Une plus grande valeur signifie une plus grande priorité. Les alertes de même priorité se remplaceront mutuellement.</string>
+    <string name="preference_summary_feedback_other_priority">%s</string>
+    <string name="preference_title_feedback_other_only_light_notification">Ne réagir qu\'aux notifications lumineuses</string>
+    <string name="preference_summary_feedback_other_only_light_notification">Ne réagit qu\'aux notifications lumineuses. Utiles dans le cas ou une application place une icône permanente dans la barre de notification.</string>
+    
+    <string name="preference_title_advanced">Avancé</string>
+    <string name="preference_title_advanced_log_notifications">Tracer les notifications</string>
+    <string name="preference_summary_advanced_log_notifications">Enregistrer les applications qui génère des alertes</string>
+    <string name="preference_title_advanced_show_logged_notifications">Afficher les alertes enregistrées</string>
+    <string name="preference_summary_advanced_show_logged_notifications">Affiche les 20 dernières alertes enregistrées</string>
+    <string name="preference_title_advanced_debug">Debug</string>
+    <string name="preference_title_advanced_debug_log">Log debug output</string>
+    <string name="preference_summaryon_advanced_debug_log">Logging debug output, utiliser adb logcat sur votre appareil pour le voir</string>
+    <string name="preference_summaryoff_advanced_debug_log">No logging</string>
+    <string name="preference_title_advanced_debug_log_file">Log debug output vers un fichier</string>
+    <string name="preference_summaryon_advanced_debug_log_file">Logging debug output vers o2xtouchlednot.log sur la carte SD</string>
+    <string name="preference_summaryoff_advanced_debug_log_file">No logging</string>
+    <string name="preference_title_advanced_debug_clear_log_file">Vider le log</string>
+    
+    <string name="preference_title_other">Autre</string>
+    <string name="preference_title_about">A Propos</string>
+    <string name="preference_title_show_changelog">Afficher le log de changement</string>
+    <string name="preference_title_about_version">Version</string>
+    <string name="preference_title_about_device">Appareil détecté</string>
+    <string name="preference_title_about_developer">Développeur</string>
+    <string name="preference_title_about_translator">Traducteur</string>
+    
+    <string name="preference_title_customized_feedback">Alertes personnalisées</string>
+    <string name="preference_summaryon_customized_feedback">Une alerte personnalisées est définie</string>
+    <string name="preference_summaryoff_customized_feedback">L\'alerte par défaut est utilisée</string>
+    <string name="preference_title_customized_feedback_options">Options des alertes</string>
+    <string name="preference_summary_customized_feedback_options">Modifier les options des alertes</string>
+    
+    <string name="dialog_title_unable_to_start">Appareil non supporté</string>
+    <string name="dialog_message_unable_to_start">Cette application ne peut pas activer les LED pour cet appareil, les options des LED ont été désactivées.</string>
+
+    <string name="toast_monitored_activites_removed">Applications surveillées supprimées</string>
+    <string name="toast_excluded_activites_removed">Applications non surveillées supprimées</string>
+    
+    <string name="dialog_title_logged_notifications">Notifications enregistrées</string>
+    <string name="dialog_message_logged_notifications_package_name">Nom du Package:</string>
+    <string name="dialog_message_logged_notifications_trigger_lights">Lumière allumées:</string>
+    <string name="dialog_message_logged_notifications_received">Reçues:</string>
+    <string name="dialog_message_logged_notifications_none">Pas de notifications enregistrées</string>
+    
+    <string name="dialog_message_enable_accessibility">L\'application doit être activée dans les paramètres d\'accessibilité, voulez-vous le faire maintenant?</string>
+
+    <string name="dialog_title_loading_activities">Chargement des applications&#8230;</string>
+    <string name="dialog_title_select_activities">Choisir les applications</string>
+    <string name="toast_added_activity">Ajouté</string>
+    
+    <string name="time_second">seconde</string>
+    <string name="time_seconds">secondes</string>
+    <string name="time_milliseconds">millisecondes</string>
+    
+    <string name="other_none">Aucun</string>
+    
+    <string name="array_pulse_timeout_1">Jamais</string>
+    <string name="array_pulse_timeout_2">15 minutes</string>
+    <string name="array_pulse_timeout_3">30 minutes</string>
+    <string name="array_pulse_timeout_4">1 heure</string>
+    <string name="array_pulse_timeout_5">2 heures</string>
+    <string name="array_pulse_timeout_6">3 heures</string>
+    <string name="array_pulse_timeout_7">4 heures</string>
+    <string name="array_pulse_timeout_8">5 heures</string>
+    <string name="array_pulse_timeout_9">6 heures</string>
+    <string name="array_pulse_timeout_10">7 heures</string>
+    <string name="array_pulse_timeout_11">8 heures</string>
+    
+    <string name="array_vibrate_mode_1">Off</string>
+    <string name="array_vibrate_mode_2">Une seule fois</string>
+    <string name="array_vibrate_mode_3">Répétition</string>
+    <string name="array_vibrate_mode_4">Augmenter le délais au cours du temps</string>
+    
+    <string name="array_notification_ringtone_mode_1">Off</string>
+    <string name="array_notification_ringtone_mode_2">Une seule fois</string>
+    <string name="array_notification_ringtone_mode_3">Répétition</string>
+    <string name="array_notification_ringtone_mode_4">Augmenter le délais au cours du temps</string>
+    
+    <string name="array_pulse_mode_1">Pulsations dégradées à répétition</string>
+    <string name="array_pulse_mode_2">Pulsations à répétition</string>
+    <string name="array_pulse_mode_3">Constant</string>
+    <string name="array_pulse_mode_4">Pulsation dégradée unique</string>
+    <string name="array_pulse_mode_5">Pulsation unique</string>
+    
+    <string name="dialog_title_changelog">Log de changement</string>
+    
+    <string name="dialog_message_has_root_do_chmod">L\'application a détecté qu\'il n\'y avait pas de droits suffisant sur un fichier nécessaire, voulez-vous réglé ce problème?\nSi vous accepter, cette modification sera faite à chaque démarrage sans confirmation. Cette action nécessite les droits root sur l\'appareil.</string>
+    <string name="dialog_message_no_root">L\'application a détecté qu\'il n\'y avait pas de droits suffisant sur un fichier nécessaire. Ce problème peut-être réglé mais l\'appareil doit-être en mode root.</string>
+    
+    <string name="dialog_message_no_gmail_permissions">L\'application n\'a pas le droit de vérifier GMail, probablement suite à l\'update GMail 2.3.5. Pour activer GMail vous devez activé l\'accessibilité. Voulez vous le faire maintenant?</string>
+    
+</resources>
