@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LG 呼吸灯</string>
+    
+    <string name="translator_language">简体中文</string> <!-- translated language -->
+    <string name="translator_name">懒人国度</string> <!-- your name, leave empty if you do not want to be credited -->
+    
+    <string name="preference_title_main_options">主选项</string>
+    <string name="preference_title_enable">启用</string>
+    <string name="preference_title_notifications">通知</string>
+    <string name="preference_title_gmail">Gmail</string>
+    <string name="preference_title_smsmms">短信/彩信</string>
+    <string name="preference_title_missed_calls">未接电话</string>
+    <string name="preference_title_monitored_activities">要监控的程序</string>
+    <string name="preference_title_select_monitored_activities">程序监控白名单</string>
+    <string name="preference_summary_select_monitored_activities">程序将被通知监控</string>
+    <string name="preference_title_clear_monitored_activities">清空白名单</string>
+    <string name="preference_summary_clear_monitored_activities">清空所有监控的程序</string>
+    <string name="preference_title_notifications_with_lights">呼吸灯提示通知</string>
+    <string name="preference_summaryon_notifications_with_lights">启动所有要LED灯反馈的通知</string>
+    <string name="preference_summaryoff_notifications_with_lights">不要启动LED灯通知反馈</string>
+    <string name="preference_title_excluded_activities">程序监控黑名单</string>
+    <string name="preference_summary_excluded_activities">程序将不配通知监控</string>
+    <string name="preference_title_clear_excluded_activities">清空黑名单</string>
+    <string name="preference_summary_clear_excluded_activities">清空所有不被监控的程序</string>
+    
+    <string name="preference_title_feedback">反馈</string>
+    <string name="preference_title_customize">定制</string>
+    <string name="preference_title_default_feedback_options">默认反馈选项</string>
+    <string name="preference_summary_default_feedback_options">更改默认的反馈选项</string>
+    <string name="preference_title_feedback_notifications">通知</string>
+    <string name="preference_summary_feedback_notifications">反馈选项更改通知</string>
+    <string name="preference_title_feedback_delay">延时</string>
+    <string name="preference_summary_feedback_delay">更改通知反馈选项</string>
+    <string name="dialog_message_feedback_delay">在几秒内</string>
+    <string name="dialog_description_feedback_delay">等待 %s 在反馈前</string>
+    <string name="dialog_description_feedback_delay_disabled">禁用反馈延迟</string>
+    <string name="preference_title_feedback_timeout">超时</string>
+    <string name="preference_summary_feedback_timeout">%s 小时</string>
+    
+    <string name="preference_title_feedback_notification">通知</string>
+    <string name="preference_title_feedback_display_notification">显示通知</string>
+    <string name="preference_summaryon_feedback_display_notification">当通知栏有反馈时显示，可以选择关闭</string>
+    <string name="preference_summaryoff_feedback_display_notification">反馈时，没有显示通知</string>
+    <string name="preference_title_feedback_always_display_notification">总是显示</string>
+    <string name="preference_summaryon_feedback_always_display_notification">总是显示通知</string>
+    <string name="preference_summaryoff_feedback_always_display_notification">只有通知时才显示</string>
+    <string name="preference_title_feedback_display_notification_activity">显示通知活动</string>
+    <string name="preference_summaryon_feedback_display_notification_activity">显示引发了最后的通知的活动</string>
+    <string name="preference_summaryoff_feedback_display_notification_activity">不显示引发了最后的通知的活动</string>
+    
+    <string name="preference_title_miscellaneous_options">其他选项</string>
+    <string name="preference_title_miscellaneous">其他</string>
+    <string name="preference_title_miscellaneous_accelerometer">加速器</string>
+    <string name="preference_summary_miscellaneous_accelerometer">加速传感器是用来检测用户活动</string>
+    <string name="preference_title_miscellaneous_accelerometer_enable_in_lockscreen">在锁屏下启用</string>
+    <string name="preference_summaryon_miscellaneous_accelerometer_enable_in_lockscreen">加速度计在锁屏启用</string>
+    <string name="preference_summaryoff_miscellaneous_accelerometer_enable_in_lockscreen">加速度计在锁屏不启用</string>
+    <string name="preference_title_miscellaneous_accelerometer_tolerance">加速公差</string>
+    <string name="preference_summary_miscellaneous_accelerometer_tolerance">当前值: %s</string>
+    <string name="preference_title_miscellaneous_sleep">睡眠</string>
+    <string name="preference_summary_miscellaneous_sleep">禁用反馈选项</string>
+    <string name="preference_title_miscellaneous_sleep_enable">启用睡眠</string>
+    <string name="preference_title_miscellaneous_sleep_off_time">关闭时间</string>
+    <string name="preference_title_miscellaneous_sleep_on_time">开启时间</string>
+    <string name="preference_title_miscellaneous_touch_led">触摸LED的选项</string>
+    <string name="preference_summary_miscellaneous_touch_led">触摸LED按键的其他选项</string>
+    <string name="preference_title_miscellaneous_touch_led_not_available">不可用</string>
+    <string name="preference_summary_miscellaneous_touch_led_not_available">此选项不支持你的设备</string>
+    <string name="preference_title_miscellaneous_touch_led_set_on_boot">开机设置</string>
+    <string name="preference_summaryon_miscellaneous_touch_led_set_on_boot">设置开机的定义触摸LED亮度</string>
+    <string name="preference_summaryoff_miscellaneous_touch_led_set_on_boot">不要设置开机的定义触摸LED亮度</string>
+    <string name="preference_title_miscellaneous_touch_led_brightness">触摸LED亮度</string>
+    <string name="preference_summary_miscellaneous_touch_led_brightness">设置正常使用触摸LED的亮度</string>
+    <string name="preference_title_miscellaneous_charging">充电</string>
+    <string name="preference_summary_miscellaneous_charging">充电选项</string>
+    <string name="preference_title_miscellaneous_charging_disable_feedback">充电时禁用反馈</string>
+    <string name="preference_summaryon_miscellaneous_charging_disable_feedback">充电时反馈被禁止</string>
+    <string name="preference_summaryoff_miscellaneous_charging_disable_feedback">充电时启用反馈</string>
+    <string name="preference_title_miscellaneous_charging_charge_indicator">充电指示灯</string>
+    <string name="preference_summaryon_miscellaneous_charging_charge_indicator">充电时屏幕关闭后LED亮起；充电完成时LED熄灭</string>
+    <string name="preference_summaryoff_miscellaneous_charging_charge_indicator">充电指示灯被禁用</string>
+    <string name="preference_title_miscellaneous_charging_touch_led_brightness">充电时LED的亮度</string>
+    <string name="preference_summary_miscellaneous_charging_touch_led_brightness">设置充电时LED的亮度</string>
+    <string name="preference_title_miscellaneous_battery_saving">省电项</string>
+    <string name="preference_summary_miscellaneous_battery_saving">省电选项</string>
+    <string name="preference_title_miscellaneous_battery_saving_disable_feedback">低电量时，关闭反馈</string>
+    <string name="preference_summaryon_miscellaneous_battery_saving_disable_feedback">在低电时，反馈将被禁止</string>
+    <string name="preference_summaryoff_miscellaneous_battery_saving_disable_feedback">低电量时，不关闭反馈</string>
+    <string name="preference_title_miscellaneous_battery_saving_disable_feedback_value">低电量设置值</string>
+    <string name="preference_summary_miscellaneous_battery_saving_disable_feedback_value">%s %</string>
+    <string name="preference_title_miscellaneous_autostart">自动启动</string>
+    <string name="preference_title_miscellaneous_autostart_service">自动启动服务</string>
+    <string name="preference_summaryon_miscellaneous_autostart_service">开机启动服务</string>
+    <string name="preference_summaryoff_miscellaneous_autostart_service">开机不启动服务</string>
+
+   <string name="preference_title_feedback_test">测试</string>
+    <string name="preference_summary_feedback_test">反馈测试</string>
+    <string name="dialog_title_feedback_test">测试中&#8230;</string>
+    <string name="preference_title_feedback_touch_led">Touch LED</string>
+    <string name="preference_title_feedback_touch_led_mode">模式</string>
+    <string name="preference_title_feedback_touch_led_fade_in_time">淡出时间</string>
+    <string name="dialog_title_feedback_touch_led_fade_in_time">毫秒淡出时间</string>
+    <string name="preference_title_feedback_touch_led_fully_lit_time">完全亮起的时间</string>
+    <string name="dialog_title_feedback_touch_led_fully_lit_time">毫秒亮起时间</string>
+    <string name="preference_title_feedback_touch_led_fade_out_time">淡出时间</string>
+    <string name="dialog_title_feedback_touch_led_fade_out_time">毫秒淡出时间</string>
+    <string name="preference_title_feedback_touch_led_inactive_time">活动时间</string>
+    <string name="dialog_title_feedback_touch_led_inactive_time">毫秒活动时间</string>
+    <string name="preference_summary_feedback_touch_led_time">%s 毫秒</string>
+    <string name="preference_title_feedback_touch_led_brightness">LED 亮度</string>
+    <string name="preference_summary_feedback_touch_led_brightness">%s %</string>
+    <string name="preference_title_feedback_vibrator">震动</string>
+    <string name="preference_title_feedback_vibrator_mode">模式</string>
+    <string name="preference_title_feedback_vibrator_duration">时间</string>
+    <string name="dialog_title_feedback_vibrator_duration">在毫秒之内</string>
+    <string name="preference_summary_feedback_vibrator_duration">%s 毫秒</string>
+    <string name="preference_title_feedback_vibrator_delay">延迟</string>
+    <string name="dialog_title_feedback_vibrator_delay">在毫秒之内</string>
+    <string name="preference_summary_feedback_vibrator_delay">震动间隔（毫秒）</string>
+    
+   <string name="preference_title_feedback_notification_ringtone">通知铃声</string>
+    <string name="preference_title_feedback_notification_ringtone_select">选择通知铃声</string>
+    <string name="preference_summary_feedback_notification_ringtone_select">当前铃声:</string>
+    <string name="preference_title_feedback_notification_ringtone_mode">模式</string>
+    <string name="preference_title_feedback_notification_ringtone_duration">时间</string>
+    <string name="dialog_title_feedback_notification_ringtone_duration">在毫秒之内</string>
+    <string name="preference_summary_feedback_notification_ringtone_duration">%s 毫秒</string>
+    <string name="preference_title_feedback_notification_ringtone_delay">延迟</string>
+    <string name="dialog_title_feedback_notification_ringtone_delay">在毫秒之内</string>
+    <string name="preference_summary_feedback_notification_ringtone_delay">等待 %s 毫秒 再响</string>
+    
+   <string name="preference_title_feedback_other">其他</string>
+    <string name="preference_title_feedback_other_priority">优先</string>
+    <string name="dialog_title_feedback_other_priority">值越大越优先. 相同值将被替换.</string>
+    <string name="preference_summary_feedback_other_priority">%s</string>
+    <string name="preference_title_feedback_other_only_light_notification">Only on light notification</string>
+    <string name="preference_summary_feedback_other_only_light_notification">React only on light notifications that the activity sends. 如果有一个永久的通知在通知栏就将有用</string>
+    
+    <string name="preference_title_advanced">高级</string>
+    <string name="preference_title_advanced_log_notifications">记录通知</string>
+    <string name="preference_summary_advanced_log_notifications">启用这个（如果你想找出哪些活动产生了某些通知）</string>
+    <string name="preference_title_advanced_show_logged_notifications">显示记录的通知</string>
+    <string name="preference_summary_advanced_show_logged_notifications">显示过去20收到的所有活动的通知</string>
+    <string name="preference_title_advanced_debug">调试</string>
+    <string name="preference_title_advanced_debug_log">记录调试输出</string>
+    <string name="preference_summaryon_advanced_debug_log">记录调试输出, 在你的设备上用adb日志查看</string>
+    <string name="preference_summaryoff_advanced_debug_log">无记录</string>
+    <string name="preference_title_advanced_debug_log_file">记录调试输出文件</string>
+    <string name="preference_summaryon_advanced_debug_log_file">记录调试输出到 o2xtouchlednot.记录到SD卡</string>
+    <string name="preference_summaryoff_advanced_debug_log_file">无记录</string>
+    <string name="preference_title_advanced_debug_clear_log_file">清除记录文件</string>
+    
+    <string name="preference_title_other">其他</string>
+    <string name="preference_title_about">关于</string>
+    <string name="preference_title_show_changelog">显示更新日志</string>
+    <string name="preference_title_about_version">版本</string>
+    <string name="preference_title_about_device">当前设备</string>
+    <string name="preference_title_about_developer">汉化</string>
+    <string name="preference_title_about_translator">翻译者</string>
+    
+    <string name="preference_title_customized_feedback">自定义反馈</string>
+    <string name="preference_summaryon_customized_feedback">自定义已启用</string>
+    <string name="preference_summaryoff_customized_feedback">默认设置已启用</string>
+    <string name="preference_title_customized_feedback_options">反馈选项</string>
+    <string name="preference_summary_customized_feedback_options">更改反馈选项</string>
+    
+    <string name="dialog_title_unable_to_start">不支持的设备</string>
+    <string name="dialog_message_unable_to_start">此应用程序不能修改该设备的指示灯，LED选项已被禁用</string>
+
+    <string name="toast_monitored_activites_removed">删除监视的活动</string>
+    <string name="toast_excluded_activites_removed">删除排除的活动</string>
+    
+    <string name="dialog_title_logged_notifications">已记录的通知</string>
+    <string name="dialog_message_logged_notifications_package_name">软件名</string>
+    <string name="dialog_message_logged_notifications_trigger_lights">触发灯光:</string>
+    <string name="dialog_message_logged_notifications_received">接收:</string>
+    <string name="dialog_message_logged_notifications_none">没收到通知</string>
+    
+    <string name="dialog_message_enable_accessibility">应用程序必须在辅助功能设置中启用，你现在要做到这一点？</string>
+
+    <string name="dialog_title_loading_activities">载入中&#8230;</string>
+    <string name="dialog_title_select_activities">选择活动</string>
+    <string name="toast_added_activity">更多</string>
+    
+     <string name="time_second">秒</string>
+    <string name="time_seconds">秒</string>
+    <string name="time_milliseconds">毫秒</string>
+    
+    <string name="other_none">从不</string>
+    
+    <string name="array_pulse_timeout_1">从不</string>
+    <string name="array_pulse_timeout_2">15 分钟</string>
+    <string name="array_pulse_timeout_3">30 分钟</string>
+    <string name="array_pulse_timeout_4">1 小时</string>
+    <string name="array_pulse_timeout_5">2 小时</string>
+    <string name="array_pulse_timeout_6">3 小时</string>
+    <string name="array_pulse_timeout_7">4 小时</string>
+    <string name="array_pulse_timeout_8">5 小时</string>
+    <string name="array_pulse_timeout_9">6 小时</string>
+    <string name="array_pulse_timeout_10">7 小时</string>
+    <string name="array_pulse_timeout_11">8 小时</string>
+    
+    <string name="array_vibrate_mode_1">关闭</string>
+    <string name="array_vibrate_mode_2">一次</string>
+    <string name="array_vibrate_mode_3">重复</string>
+    <string name="array_vibrate_mode_4">增设延迟间隔</string>
+    
+    <string name="array_notification_ringtone_mode_1">关闭</string>
+    <string name="array_notification_ringtone_mode_2">一次</string>
+    <string name="array_notification_ringtone_mode_3">重复</string>
+    <string name="array_notification_ringtone_mode_4">增设延迟间隔</string>
+    
+    <string name="array_pulse_mode_1">重复减弱</string>
+    <string name="array_pulse_mode_2">重复不减弱</string>
+    <string name="array_pulse_mode_3">不变</string>
+    <string name="array_pulse_mode_4">一次减弱</string>
+    <string name="array_pulse_mode_5">一次不减弱</string>
+    
+    <string name="dialog_title_changelog">更新日志</string>
+    
+    <string name="dialog_message_has_root_do_chmod">应用程序没有检测到它已经读或写访问所需的文件，你要解决这个问题吗？这将执行引导修复，不再询问，这个动作需要root。</string>
+    <string name="dialog_message_no_root">应用程序检测到它已经没有读或写访问到所需的文件。这一行动可以固定，但需要手机已root。这必须在软件工作前。</string>
+    
+    <string name="dialog_message_no_gmail_permissions">应用程序没有检查Gmail的，可能是由于Gmail的2.3.5更新的权限。要启用Gmail再次无障碍启用。你想要现在解决吗？</string>
+    
+</resources>
