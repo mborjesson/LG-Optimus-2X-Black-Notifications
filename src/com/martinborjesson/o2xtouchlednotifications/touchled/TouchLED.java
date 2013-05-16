@@ -133,6 +133,8 @@ abstract public class TouchLED {
 		if (touchLED == null) {
 			if (TouchLEDP990.isAvailable()) { // P990 and P999 works the same
 				touchLED = new TouchLEDP990();
+			} else if (TouchLEDP880.isAvailable()) {
+				touchLED = new TouchLEDP880();
 			} else if (TouchLEDP990ICS.isAvailable()) {
 				touchLED = new TouchLEDP990ICS();
 			} else if (TouchLEDP970.isAvailable()) {
