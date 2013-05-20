@@ -489,20 +489,32 @@ public class MainService extends Service implements SensorEventListener {
 	}
 	
 	static public void readNotificationActivitiesSettings(Context context) {
-		Intent intent = new Intent(context, AccessibilityService.class);
+		Class<?> clz = AccessibilityService.class;
+		if (context.getResources().getBoolean(R.bool.isAtLeastJellyBean)) {
+			clz = AccessibilityServiceJB.class;
+		}
+		Intent intent = new Intent(context, clz);
 		intent.setAction(AccessibilityService.ACTION_READ_SETTINGS);
 		context.startService(intent);
 	}
 	
 	private void addExcludedActivity(String packageName) {
-		Intent intent = new Intent(this, AccessibilityService.class);
+		Class<?> clz = AccessibilityService.class;
+		if (getResources().getBoolean(R.bool.isAtLeastJellyBean)) {
+			clz = AccessibilityServiceJB.class;
+		}
+		Intent intent = new Intent(this, clz);
 		intent.setAction(AccessibilityService.ACTION_ADD_EXCLUDED);
 		intent.putExtra("packageName", packageName);
 		startService(intent);
 	}
 
 	private void addMonitoredActivity(String packageName) {
-		Intent intent = new Intent(this, AccessibilityService.class);
+		Class<?> clz = AccessibilityService.class;
+		if (getResources().getBoolean(R.bool.isAtLeastJellyBean)) {
+			clz = AccessibilityServiceJB.class;
+		}
+		Intent intent = new Intent(this, clz);
 		intent.setAction(AccessibilityService.ACTION_ADD);
 		intent.putExtra("packageName", packageName);
 		startService(intent);
