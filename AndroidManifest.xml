@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.martinborjesson.o2xtouchlednotifications" android:versionName="1.2.7" android:versionCode="78">
-    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="14" />
+      package="com.martinborjesson.o2xtouchlednotifications" android:versionName="1.2.7.2" android:versionCode="81">
+    <uses-sdk android:minSdkVersion="8" android:targetSdkVersion="17" />
 	<uses-permission android:name="com.google.android.gm.permission.READ_GMAIL"></uses-permission>
 	<uses-permission android:name="android.permission.GET_ACCOUNTS"></uses-permission>
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
@@ -28,7 +28,12 @@
         <service android:name=".services.MainService">
             <intent-filter android:label="SERVICE_MAIN"></intent-filter>
         </service>
-        <service android:name=".services.AccessibilityService" android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+        <service android:name=".services.AccessibilityService" android:enabled="@bool/IsNotJellyBean">
+            <intent-filter>
+            	<action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+        </service>
+        <service android:name=".services.AccessibilityServiceJB" android:enabled="@bool/isAtLeastJellyBean" android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
             	<action android:name="android.accessibilityservice.AccessibilityService" />
             </intent-filter>
@@ -36,6 +41,7 @@
             	android:name="android.accessibilityservice"
            		android:resource="@xml/accessibilityservice" />
         </service>
+        
         <receiver android:name=".feedbacks.TouchLEDReceiver">
             <intent-filter android:label="RECEIVER_TOUCH_LED"></intent-filter>
         </receiver>
