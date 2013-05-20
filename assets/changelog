@@ -1,3 +1,9 @@
+1.2.7.2 (19 May 2013)
+* Fixed the previous issue that was supposed to be fixed :)
+
+1.2.7.1 (18 May 2013)
+* Fixed a permission issue for pre-JellyBean-devices that appeared due to the fixes to CM 10.1
+
 1.2.7 (11 May 2013)
 * Some fixes done for CyanogenMod 10.1. Thanks to Simon!
 * Added Chinese translation. Thanks to LazyCountry!
