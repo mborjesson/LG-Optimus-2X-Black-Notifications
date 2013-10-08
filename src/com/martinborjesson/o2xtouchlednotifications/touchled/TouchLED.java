@@ -153,6 +153,8 @@ abstract public class TouchLED {
 				touchLED = new TouchLEDP350();
 			} else if (TouchLEDF160.isAvailable()) {
 				touchLED = new TouchLEDF160(); // JellyBean support for F160
+			} else if (TouchLEDMT65XX.isAvailable()) {
+				touchLED = new TouchLEDMT65XX(); // JellyBean support for MT65XX devices
 			} else {
 				touchLED = new TouchLEDNone();
 			}
